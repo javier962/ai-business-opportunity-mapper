@@ -3,36 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>AI Business Opportunity Mapper</title>
+
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background: #f5f7fb;
   color: #172033;
 }
+
 header {
   background: #111827;
   color: white;
   padding: 55px 20px;
   text-align: center;
 }
+
 header h1 {
   margin: 0 0 12px;
   font-size: 38px;
 }
+
 header p {
   max-width: 760px;
   margin: auto;
   color: #d1d5db;
   line-height: 1.6;
 }
+
 .container {
   max-width: 1050px;
   margin: 35px auto;
   padding: 0 20px;
 }
+
 .card {
   background: white;
   border-radius: 14px;
@@ -40,24 +50,33 @@ header p {
   margin-bottom: 24px;
   box-shadow: 0 4px 18px rgba(0,0,0,.06);
 }
-h2 { margin-top: 0; }
+
+h2 {
+  margin-top: 0;
+}
+
 label {
   display: block;
   font-weight: 700;
   margin-top: 18px;
   margin-bottom: 7px;
 }
-input, select, textarea {
+
+input,
+select,
+textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccd3dd;
   border-radius: 8px;
   font-size: 15px;
 }
+
 textarea {
   min-height: 90px;
   resize: vertical;
 }
+
 button {
   margin-top: 25px;
   background: #2563eb;
@@ -69,8 +88,15 @@ button {
   font-weight: bold;
   cursor: pointer;
 }
-button:hover { background: #1d4ed8; }
-#results { display: none; }
+
+button:hover {
+  background: #1d4ed8;
+}
+
+#results {
+  display: none;
+}
+
 .dimension {
   border-left: 5px solid #2563eb;
   padding: 15px 18px;
@@ -78,9 +104,11 @@ button:hover { background: #1d4ed8; }
   background: #f8fafc;
   border-radius: 6px;
 }
+
 .dimension h3 {
   margin: 0 0 7px;
 }
+
 .badge {
   display: inline-block;
   background: #e8eefc;
@@ -89,253 +117,425 @@ button:hover { background: #1d4ed8; }
   border-radius: 20px;
   font-size: 12px;
 }
+
 .opportunity {
   margin: 12px 0;
   padding: 15px;
   border: 1px solid #e1e5eb;
   border-radius: 8px;
 }
+
 .opportunity strong {
   display: block;
   margin-bottom: 5px;
 }
+
 footer {
   text-align: center;
   padding: 35px;
   color: #687386;
   font-size: 13px;
 }
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 30px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}
 </style>
 </head>
+
 <body>
+
 <header>
   <h1>AI Business Opportunity Mapper</h1>
+
   <p>
     A practical framework for identifying where AI can create measurable
     business value — from revenue growth and efficiency to customer service
     and strategic innovation.
   </p>
 </header>
+
 <div class="container">
-<div class="card">
-<h2>1. Describe the Business</h2>
 
-Company / Project Name
-Industry
-Business Model
-<option>B2B</option>
-<option>B2C</option>
-<option>Marketplace / Platform</option>
-<option>SaaS / Subscription</option>
-<option>E-commerce</option>
-<option>Professional Services</option>
-<option>Other</option>
-</select>
+  <div class="card">
 
-Company Size
-<option>Startup / Small Business</option>
-<option>Mid-sized Business</option>
-<option>Large Enterprise</option>
-</select>
+    <h2>1. Describe the Business</h2>
 
-Primary Business Objective
-<option>Grow revenue</option>
-<option>Improve operational efficiency</option>
-<option>Improve customer experience</option>
-<option>Improve customer support</option>
-<option>Improve decision making</option>
-<option>Develop new products or business models</option>
-</select>
+    <label for="company">Company / Project Name</label>
+    <input
+      id="company"
+      type="text"
+      placeholder="Example: Acme Services"
+    >
 
-Key Business Challenges
+    <label for="industry">Industry</label>
+    <input
+      id="industry"
+      type="text"
+      placeholder="Example: Real Estate, Automotive, Retail, Financial Services"
+    >
 
-<textarea id="challenges"
-placeholder="Describe the main commercial, operational or customer challenges facing the business."></textarea>
+    <label for="model">Business Model</label>
+    <select id="model">
+      <option>B2B</option>
+      <option>B2C</option>
+      <option>Marketplace / Platform</option>
+      <option>SaaS / Subscription</option>
+      <option>E-commerce</option>
+      <option>Professional Services</option>
+      <option>Other</option>
+    </select>
 
-Customer Type
-Generate Opportunity Map
+    <label for="size">Company Size</label>
+    <select id="size">
+      <option>Startup / Small Business</option>
+      <option>Mid-sized Business</option>
+      <option>Large Enterprise</option>
+    </select>
+
+    <label for="objective">Primary Business Objective</label>
+    <select id="objective">
+      <option>Grow revenue</option>
+      <option>Improve operational efficiency</option>
+      <option>Improve customer experience</option>
+      <option>Improve customer support</option>
+      <option>Improve decision making</option>
+      <option>Develop new products or business models</option>
+    </select>
+
+    <label for="challenges">Key Business Challenges</label>
+    <textarea
+      id="challenges"
+      placeholder="Describe the main commercial, operational or customer challenges facing the business."
+    ></textarea>
+
+    <label for="customers">Customer Type</label>
+    <input
+      id="customers"
+      type="text"
+      placeholder="Example: consumers, SMEs, enterprise clients, property buyers..."
+    >
+
+    <button type="button" onclick="generateMap()">
+      Generate Opportunity Map
+    </button>
+
+  </div>
+
+  <div class="card" id="results">
+
+    <h2>2. AI Opportunity Map</h2>
+
+    <p id="summary"></p>
+
+    <div id="map"></div>
+
+    <h2>3. Initial Priorities</h2>
+
+    <div id="priorities"></div>
+
+    <p style="font-size:13px;color:#687386;margin-top:25px;">
+      This prototype uses a structured business framework rather than a live
+      generative-AI model. Future versions will add AI-assisted company analysis
+      and dynamic opportunity generation.
+    </p>
+
+  </div>
 
 </div>
-<div class="card" id="results">
-<h2>2. AI Opportunity Map</h2>
-<p id="summary"></p>
-<div id="map"></div>
-<h2>3. Initial Priorities</h2>
-<div id="priorities"></div>
-<p style="font-size:13px;color:#687386;margin-top:25px;">
-This prototype uses a structured business framework rather than a live
-generative-AI model. Future versions will add AI-assisted company analysis
-and dynamic opportunity generation.
-</p>
-</div>
-</div>
+
 <footer>
-AI Business Opportunity Mapper · Javier Ortiz Sanz
+  AI Business Opportunity Mapper · Javier Ortiz Sanz
 </footer>
+
 <script>
+
 const dimensions = [
-{
-name:"Revenue Growth",
-ideas:[
-"AI-assisted lead identification and qualification",
-"Sales intelligence and account research",
-"Personalized offers and recommendations",
-"Pricing and conversion optimization",
-"AI-enabled cross-sell and upsell"
-]
-},
-{
-name:"Operational Efficiency",
-ideas:[
-"Automate repetitive administrative workflows",
-"AI-assisted document processing",
-"Internal knowledge assistants",
-"Automated reporting and summarization",
-"Process monitoring and exception detection"
-]
-},
-{
-name:"Customer Experience",
-ideas:[
-"Personalized customer journeys",
-"Intelligent recommendations",
-"Conversational product or service discovery",
-"AI-assisted onboarding",
-"Proactive customer engagement"
-]
-},
-{
-name:"Customer Support & Service",
-ideas:[
-"AI support agent for common requests",
-"Customer-service agent copilot",
-"Automatic ticket classification and routing",
-"Conversation and call summarization",
-"Multilingual support automation",
-"Support quality and sentiment monitoring"
-]
-},
-{
-name:"Decision Intelligence",
-ideas:[
-"AI-assisted market and competitor intelligence",
-"Forecasting and predictive analytics",
-"Management decision-support dashboards",
-"Customer churn or risk detection",
-"Automated analysis of business data"
-]
-},
-{
-name:"Strategic Advantage & New Business Models",
-ideas:[
-"AI-enabled products and services",
-"New data-driven revenue models",
-"AI agents that perform customer tasks",
-"Intelligent marketplaces or platforms",
-"New advisory or information services"
-]
+  {
+    name: "Revenue Growth",
+    ideas: [
+      "AI-assisted lead identification and qualification",
+      "Sales intelligence and account research",
+      "Personalized offers and recommendations",
+      "Pricing and conversion optimization",
+      "AI-enabled cross-sell and upsell"
+    ]
+  },
+
+  {
+    name: "Operational Efficiency",
+    ideas: [
+      "Automate repetitive administrative workflows",
+      "AI-assisted document processing",
+      "Internal knowledge assistants",
+      "Automated reporting and summarization",
+      "Process monitoring and exception detection"
+    ]
+  },
+
+  {
+    name: "Customer Experience",
+    ideas: [
+      "Personalized customer journeys",
+      "Intelligent recommendations",
+      "Conversational product or service discovery",
+      "AI-assisted onboarding",
+      "Proactive customer engagement"
+    ]
+  },
+
+  {
+    name: "Customer Support & Service",
+    ideas: [
+      "AI support agent for common requests",
+      "Customer-service agent copilot",
+      "Automatic ticket classification and routing",
+      "Conversation and call summarization",
+      "Multilingual support automation",
+      "Support quality and sentiment monitoring"
+    ]
+  },
+
+  {
+    name: "Decision Intelligence",
+    ideas: [
+      "AI-assisted market and competitor intelligence",
+      "Forecasting and predictive analytics",
+      "Management decision-support dashboards",
+      "Customer churn or risk detection",
+      "Automated analysis of business data"
+    ]
+  },
+
+  {
+    name: "Strategic Advantage & New Business Models",
+    ideas: [
+      "AI-enabled products and services",
+      "New data-driven revenue models",
+      "AI agents that perform customer tasks",
+      "Intelligent marketplaces or platforms",
+      "New advisory or information services"
+    ]
+  }
+];
+
+
+function generateMap() {
+
+  const company =
+    document.getElementById("company").value.trim() || "The business";
+
+  const industry =
+    document.getElementById("industry").value.trim() || "its industry";
+
+  const model =
+    document.getElementById("model").value;
+
+  const size =
+    document.getElementById("size").value;
+
+  const objective =
+    document.getElementById("objective").value;
+
+  const challenges =
+    document.getElementById("challenges").value.trim();
+
+  const customers =
+    document.getElementById("customers").value.trim() || "its customers";
+
+
+  let summary =
+    "<strong>" + company + "</strong> is a " +
+    size.toLowerCase() +
+    " operating in <strong>" + industry +
+    "</strong> with a " + model +
+    " business model. Its stated priority is to <strong>" +
+    objective.toLowerCase() +
+    "</strong>.";
+
+  if (challenges) {
+    summary +=
+      " The assessment also considers the stated challenge: <em>" +
+      escapeHTML(challenges) +
+      "</em>.";
+  }
+
+  summary +=
+    " The opportunity map below provides an initial structured assessment of where AI could create value for the business and for " +
+    escapeHTML(customers) + ".";
+
+  document.getElementById("summary").innerHTML = summary;
+
+
+  let html = "";
+
+  dimensions.forEach((dimension, index) => {
+
+    let relevance = "Medium";
+
+    if (objective === "Grow revenue" && index === 0) {
+      relevance = "High";
+    }
+
+    if (objective === "Improve operational efficiency" && index === 1) {
+      relevance = "High";
+    }
+
+    if (objective === "Improve customer experience" && index === 2) {
+      relevance = "High";
+    }
+
+    if (objective === "Improve customer support" && index === 3) {
+      relevance = "High";
+    }
+
+    if (objective === "Improve decision making" && index === 4) {
+      relevance = "High";
+    }
+
+    if (
+      objective === "Develop new products or business models" &&
+      index === 5
+    ) {
+      relevance = "High";
+    }
+
+
+    html +=
+      '<div class="dimension">' +
+      '<h3>' + dimension.name + '</h3>' +
+      '<span class="badge">Initial relevance: ' +
+      relevance +
+      '</span>';
+
+
+    dimension.ideas.slice(0, 3).forEach(idea => {
+
+      html +=
+        '<div class="opportunity">' +
+        '<strong>' + idea + '</strong>' +
+        'Potential application for ' +
+        escapeHTML(company) +
+        ' to explore in the context of ' +
+        escapeHTML(industry) +
+        ' and its ' +
+        escapeHTML(model) +
+        ' business model.' +
+        '</div>';
+
+    });
+
+    html += '</div>';
+
+  });
+
+  document.getElementById("map").innerHTML = html;
+
+
+  let priorityIdeas = [];
+
+  if (objective === "Grow revenue") {
+
+    priorityIdeas = [
+      "AI-assisted lead identification and qualification",
+      "Personalized offers and recommendations",
+      "Sales intelligence and account research"
+    ];
+
+  } else if (objective === "Improve operational efficiency") {
+
+    priorityIdeas = [
+      "Automate repetitive administrative workflows",
+      "Internal knowledge assistant",
+      "Automated reporting and summarization"
+    ];
+
+  } else if (objective === "Improve customer experience") {
+
+    priorityIdeas = [
+      "Personalized customer journeys",
+      "Conversational product or service discovery",
+      "AI-assisted onboarding"
+    ];
+
+  } else if (objective === "Improve customer support") {
+
+    priorityIdeas = [
+      "Customer-service agent copilot",
+      "AI support agent for common requests",
+      "Automatic ticket classification and routing"
+    ];
+
+  } else if (objective === "Improve decision making") {
+
+    priorityIdeas = [
+      "AI-assisted market and competitor intelligence",
+      "Forecasting and predictive analytics",
+      "Automated analysis of business data"
+    ];
+
+  } else {
+
+    priorityIdeas = [
+      "AI-enabled products and services",
+      "AI agents that perform customer tasks",
+      "New data-driven revenue models"
+    ];
+
+  }
+
+
+  let priorityHTML = "";
+
+  priorityIdeas.forEach((idea, index) => {
+
+    let type;
+
+    if (index === 0) {
+      type = "Quick Win Candidate";
+    } else if (index === 1) {
+      type = "Strategic Opportunity";
+    } else {
+      type = "Experiment";
+    }
+
+    priorityHTML +=
+      '<div class="opportunity">' +
+      '<strong>' + (index + 1) + '. ' + idea + '</strong>' +
+      '<span class="badge">' + type + '</span>' +
+      '<span class="badge">Requires validation</span>' +
+      '</div>';
+
+  });
+
+  document.getElementById("priorities").innerHTML = priorityHTML;
+
+  document.getElementById("results").style.display = "block";
+
+  document.getElementById("results").scrollIntoView({
+    behavior: "smooth"
+  });
 }
-];
-function generateMap(){
-const company =
-document.getElementById("company").value || "the business";
-const industry =
-document.getElementById("industry").value || "its industry";
-const model =
-document.getElementById("model").value;
-const size =
-document.getElementById("size").value;
-const objective =
-document.getElementById("objective").value;
-const challenges =
-document.getElementById("challenges").value;
-const customers =
-document.getElementById("customers").value || "its customers";
-document.getElementById("summary").innerHTML =
-"<strong>"+company+"</strong> is a "+size.toLowerCase()+
-" operating in "+industry+" with a "+model+
-" model. Its stated priority is to <strong>"+
-objective.toLowerCase()+"</strong>. The opportunity map below provides an initial structured assessment of areas where AI could be investigated.";
-let html="";
-dimensions.forEach((dimension,index)=>{
-let relevance="Medium";
-if(objective==="Grow revenue" && index===0) relevance="High";
-if(objective==="Improve operational efficiency" && index===1) relevance="High";
-if(objective==="Improve customer experience" && index===2) relevance="High";
-if(objective==="Improve customer support" && index===3) relevance="High";
-if(objective==="Improve decision making" && index===4) relevance="High";
-if(objective==="Develop new products or business models" && index===5) relevance="High";
-html +=
-'<div class="dimension">'+
-'<h3>'+dimension.name+'</h3>'+
-'<span class="badge">Initial relevance: '+relevance+'</span>';
-dimension.ideas.slice(0,3).forEach(idea=>{
-html +=
-'<div class="opportunity"><strong>'+
-idea+
-'</strong>Potential application for '+company+
-' to explore in the context of '+industry+
-' and its '+model+' business model.</div>';
-});
-html += '</div>';
-});
-document.getElementById("map").innerHTML=html;
-let priorityIdeas=[];
-if(objective==="Grow revenue")
-priorityIdeas=[
-"AI-assisted lead identification and qualification",
-"Personalized offers and recommendations",
-"Sales intelligence and account research"
-];
-else if(objective==="Improve operational efficiency")
-priorityIdeas=[
-"Automate repetitive administrative workflows",
-"Internal knowledge assistant",
-"Automated reporting and summarization"
-];
-else if(objective==="Improve customer experience")
-priorityIdeas=[
-"Personalized customer journeys",
-"Conversational product or service discovery",
-"AI-assisted onboarding"
-];
-else if(objective==="Improve customer support")
-priorityIdeas=[
-"Customer-service agent copilot",
-"AI support agent for common requests",
-"Automatic ticket classification and routing"
-];
-else if(objective==="Improve decision making")
-priorityIdeas=[
-"AI-assisted market and competitor intelligence",
-"Forecasting and predictive analytics",
-"Automated analysis of business data"
-];
-else
-priorityIdeas=[
-"AI-enabled products and services",
-"AI agents that perform customer tasks",
-"New data-driven revenue models"
-];
-let phtml="";
-priorityIdeas.forEach((idea,i)=>{
-let type =
-i===0 ? "Quick Win Candidate" :
-i===1 ? "Strategic Opportunity" :
-"Experiment";
-phtml +=
-'<div class="opportunity">'+
-'<strong>'+(i+1)+'. '+idea+'</strong>'+
-'<span class="badge">'+type+'</span>'+
-'<span class="badge">Requires validation</span>'+
-'</div>';
-});
-document.getElementById("priorities").innerHTML=phtml;
-document.getElementById("results").style.display="block";
-document.getElementById("results").scrollIntoView({
-behavior:"smooth"
-});
+
+
+function escapeHTML(value) {
+
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+
 }
+
 </script>
+
 </body>
 </html>
