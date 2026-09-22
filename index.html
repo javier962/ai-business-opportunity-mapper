@@ -6,245 +6,66 @@
 <title>AI Business Opportunity Mapper</title>
 
 <style>
-* { box-sizing: border-box; }
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f3f6fa;color:#172033}
+header{background:linear-gradient(135deg,#0f172a,#1e293b);color:white;padding:58px 20px;text-align:center}
+header h1{margin:0 0 12px;font-size:40px}
+header p{max-width:800px;margin:auto;line-height:1.6;color:#cbd5e1}
+.version{display:inline-block;margin-top:18px;padding:6px 12px;background:#334155;border-radius:20px;font-size:12px}
+.container{max-width:1100px;margin:35px auto;padding:0 20px}
+.card{background:white;border-radius:16px;padding:30px;margin-bottom:25px;box-shadow:0 5px 22px rgba(0,0,0,.06)}
+h2{margin-top:0}
+.subtitle{color:#64748b;line-height:1.6}
+label{display:block;font-weight:700;margin:18px 0 7px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;font-size:15px;background:white}
+textarea{min-height:105px;resize:vertical}
+button{border:none;border-radius:8px;font-weight:bold;cursor:pointer}
+.primary{margin-top:25px;background:#2563eb;color:white;padding:14px 24px;font-size:16px}
+.primary:hover{background:#1d4ed8}
+#results{display:none}
+.summary{background:#eff6ff;border-left:5px solid #2563eb;padding:20px;border-radius:8px;line-height:1.65}
+.context-signals{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
+.signal{background:#e0e7ff;padding:6px 10px;border-radius:18px;font-size:12px;font-weight:bold}
+.opportunity{border:1px solid #e2e8f0;border-radius:14px;padding:24px;margin:18px 0;background:white}
+.opportunity-top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+.rank{font-size:12px;font-weight:bold;color:#64748b;text-transform:uppercase}
+.opportunity h3{margin:6px 0;font-size:21px}
+.area{font-size:14px;color:#64748b}
+.score{font-size:31px;font-weight:bold;text-align:right}
+.score small{display:block;font-size:11px;color:#64748b;font-weight:normal}
+.badges{margin:10px 0}
+.badge{display:inline-block;padding:5px 9px;border-radius:18px;background:#eef2ff;font-size:12px;font-weight:bold;margin-right:5px}
+.bar{height:8px;background:#e2e8f0;border-radius:10px;overflow:hidden;margin:12px 0}
+.fill{height:100%;background:#2563eb}
+.score-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:16px 0}
+.metric{background:#f8fafc;padding:10px;border-radius:8px;text-align:center}
+.metric span{display:block;font-size:11px;color:#64748b}
+.metric strong{font-size:17px}
+.reason{line-height:1.6;margin:15px 0}
+.action{background:#f8fafc;padding:14px;border-radius:8px;line-height:1.5}
+.calibration{margin-top:18px;border-top:1px solid #e2e8f0;padding-top:16px}
+.calibration-title{font-size:13px;font-weight:bold;margin-bottom:10px}
+.controls{display:flex;flex-wrap:wrap;gap:8px}
+.control{padding:8px 11px;background:#f1f5f9;color:#334155;font-size:13px}
+.control:hover{background:#e2e8f0}
+.boost{background:#ecfdf5;color:#047857}
+.reduce{background:#fff1f2;color:#be123c}
+.override-note{font-size:12px;color:#64748b;margin-top:10px}
+.matrix{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.matrix-box{background:#f8fafc;padding:19px;border-radius:10px;min-height:145px}
+.matrix-box h3{margin-top:0}
+.matrix-box li{margin-bottom:8px}
+.legend{background:#f8fafc;padding:18px;border-radius:10px;line-height:1.6;color:#475569}
+.method{font-size:14px;color:#64748b;line-height:1.65}
+footer{text-align:center;padding:35px;color:#64748b;font-size:13px}
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f4f6fa;
-  color: #172033;
-}
-
-header {
-  background: #111827;
-  color: white;
-  padding: 55px 20px;
-  text-align: center;
-}
-
-header h1 {
-  margin: 0 0 10px;
-  font-size: 38px;
-}
-
-header p {
-  max-width: 780px;
-  margin: auto;
-  line-height: 1.6;
-  color: #d1d5db;
-}
-
-.version {
-  display: inline-block;
-  margin-top: 18px;
-  padding: 5px 10px;
-  background: #263244;
-  border-radius: 20px;
-  font-size: 12px;
-}
-
-.container {
-  max-width: 1080px;
-  margin: 35px auto;
-  padding: 0 20px;
-}
-
-.card {
-  background: white;
-  border-radius: 14px;
-  padding: 28px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 18px rgba(0,0,0,.06);
-}
-
-h2 { margin-top: 0; }
-
-.subtitle {
-  color: #667085;
-  line-height: 1.6;
-}
-
-label {
-  display: block;
-  font-weight: 700;
-  margin: 18px 0 7px;
-}
-
-input, select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccd3dd;
-  border-radius: 8px;
-  font-size: 15px;
-  background: white;
-}
-
-textarea {
-  min-height: 105px;
-  resize: vertical;
-}
-
-button {
-  margin-top: 25px;
-  background: #2563eb;
-  color: white;
-  border: none;
-  padding: 14px 24px;
-  border-radius: 9px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button:hover { background: #1d4ed8; }
-
-#results { display: none; }
-
-.summary-box {
-  background: #f8fafc;
-  border-left: 5px solid #2563eb;
-  padding: 18px;
-  border-radius: 7px;
-  line-height: 1.6;
-}
-
-.top-opportunity {
-  border: 1px solid #e2e7ef;
-  border-radius: 12px;
-  padding: 22px;
-  margin: 18px 0;
-}
-
-.rank {
-  font-size: 13px;
-  color: #667085;
-  font-weight: bold;
-}
-
-.top-opportunity h3 {
-  margin: 6px 0 5px;
-}
-
-.area {
-  color: #667085;
-  font-size: 14px;
-}
-
-.badge {
-  display: inline-block;
-  background: #e8eefc;
-  padding: 5px 9px;
-  margin: 8px 5px 8px 0;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.score-big {
-  font-size: 28px;
-  font-weight: bold;
-  margin: 12px 0;
-}
-
-.score-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin: 15px 0;
-}
-
-.score-item {
-  background: #f8fafc;
-  padding: 11px;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.score-item span {
-  display: block;
-  font-size: 12px;
-  color: #667085;
-}
-
-.score-item strong {
-  font-size: 18px;
-}
-
-.bar {
-  width: 100%;
-  height: 8px;
-  background: #e5e7eb;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-top: 7px;
-}
-
-.bar-fill {
-  height: 100%;
-  background: #2563eb;
-}
-
-.explanation {
-  line-height: 1.6;
-  margin-top: 12px;
-}
-
-.action {
-  background: #f8fafc;
-  padding: 13px;
-  margin-top: 13px;
-  border-radius: 8px;
-  line-height: 1.5;
-}
-
-.matrix {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-}
-
-.matrix-box {
-  padding: 18px;
-  border-radius: 10px;
-  background: #f8fafc;
-  min-height: 140px;
-}
-
-.matrix-box h3 {
-  margin-top: 0;
-}
-
-.matrix-box ul {
-  padding-left: 20px;
-}
-
-.methodology {
-  font-size: 14px;
-  color: #667085;
-  line-height: 1.6;
-}
-
-footer {
-  text-align: center;
-  padding: 35px;
-  color: #687386;
-  font-size: 13px;
-}
-
-@media(max-width:700px) {
-  header h1 { font-size: 30px; }
-
-  .score-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .matrix {
-    grid-template-columns: 1fr;
-  }
-
-  .card {
-    padding: 20px;
-  }
+@media(max-width:700px){
+header h1{font-size:30px}
+.card{padding:20px}
+.score-grid{grid-template-columns:1fr 1fr}
+.matrix{grid-template-columns:1fr}
+.opportunity-top{display:block}
+.score{text-align:left;margin-top:10px}
 }
 </style>
 </head>
@@ -252,33 +73,31 @@ footer {
 <body>
 
 <header>
-  <h1>AI Business Opportunity Mapper</h1>
-  <p>
-    Identify and prioritize where AI could create measurable business value
-    based on objectives, business context and operational challenges.
-  </p>
-  <div class="version">V2 · Strategy & Prioritization Engine</div>
+<h1>AI Business Opportunity Mapper</h1>
+<p>
+Turn business challenges, objectives and available data into a prioritized
+portfolio of practical AI opportunities — then calibrate the recommendations
+with management judgment.
+</p>
+<div class="version">V2.1 · Strategy + Management Calibration</div>
 </header>
 
 <div class="container">
 
 <div class="card">
-
 <h2>1. Business Context</h2>
-
 <p class="subtitle">
-Describe the organization. The mapper uses this information to evaluate
-potential AI opportunities and prioritize where investigation should begin.
+Describe the organization and its real challenges. Specific information produces
+a more differentiated opportunity assessment.
 </p>
 
-<label for="company">Company / Project Name</label>
-<input id="company" type="text" placeholder="Example: Acme Services">
+<label>Company / Project Name</label>
+<input id="company" placeholder="Example: Acme Marketplace">
 
-<label for="industry">Industry</label>
-<input id="industry" type="text"
-placeholder="Example: Real Estate, Automotive, Retail, Financial Services">
+<label>Industry</label>
+<input id="industry" placeholder="Example: Real Estate, Automotive, Retail">
 
-<label for="model">Business Model</label>
+<label>Business Model</label>
 <select id="model">
 <option>B2B</option>
 <option>B2C</option>
@@ -289,14 +108,14 @@ placeholder="Example: Real Estate, Automotive, Retail, Financial Services">
 <option>Other</option>
 </select>
 
-<label for="size">Company Size</label>
+<label>Company Size</label>
 <select id="size">
 <option>Startup / Small Business</option>
 <option>Mid-sized Business</option>
 <option>Large Enterprise</option>
 </select>
 
-<label for="objective">Primary Business Objective</label>
+<label>Primary Business Objective</label>
 <select id="objective">
 <option>Grow revenue</option>
 <option>Improve operational efficiency</option>
@@ -306,313 +125,201 @@ placeholder="Example: Real Estate, Automotive, Retail, Financial Services">
 <option>Develop new products or business models</option>
 </select>
 
-<label for="challenges">Key Business Challenges</label>
-<textarea id="challenges"
-placeholder="Be specific. Example: Our support team receives thousands of repetitive requests, sales teams spend too much time researching prospects, and customer retention is declining."></textarea>
+<label>Key Business Challenges</label>
+<textarea id="challenges" placeholder="Example: Customer support receives thousands of repetitive emails. Sales teams spend too much time researching prospects. Advertiser retention is declining and customers struggle to find relevant listings."></textarea>
 
-<label for="customers">Customer Type</label>
-<input id="customers" type="text"
-placeholder="Example: consumers, SMEs, enterprise clients, property buyers...">
+<label>Customer Type</label>
+<input id="customers" placeholder="Example: consumers, SMEs, enterprise clients, property buyers">
 
-<button type="button" onclick="generateMap()">
-Analyze AI Opportunities
-</button>
+<label>Available Data & Digital Assets</label>
+<textarea id="data" placeholder="Example: CRM records, customer emails, support tickets, website behaviour, transactions, listings, product catalogue, pricing history, call recordings, internal documents"></textarea>
 
+<button class="primary" onclick="generateMap()">Analyze AI Opportunities</button>
 </div>
 
 
 <div class="card" id="results">
 
 <h2>2. Executive Assessment</h2>
+<div id="summary" class="summary"></div>
 
-<div id="summary" class="summary-box"></div>
-
-<h2 style="margin-top:35px;">3. Top AI Opportunities</h2>
-
+<h2 style="margin-top:38px">3. Model-Prioritized Opportunities</h2>
 <p class="subtitle">
-Opportunities are ranked using a structured prioritization model.
-Scores are directional and should be validated with operational and financial data.
+The first ranking is generated by the framework. Management can then challenge
+the result without losing visibility of the original model ranking.
 </p>
 
-<div id="topOpportunities"></div>
+<div id="opportunities"></div>
 
-
-<h2 style="margin-top:40px;">4. Opportunity Portfolio</h2>
-
+<h2 style="margin-top:40px">4. Management-Calibrated Portfolio</h2>
 <div class="matrix">
-
-<div class="matrix-box">
-<h3>⚡ Quick Wins</h3>
-<ul id="quickWins"></ul>
+<div class="matrix-box"><h3>⚡ Quick Wins</h3><ul id="quick"></ul></div>
+<div class="matrix-box"><h3>🎯 Strategic Bets</h3><ul id="strategic"></ul></div>
+<div class="matrix-box"><h3>🔧 Enablers</h3><ul id="enablers"></ul></div>
+<div class="matrix-box"><h3>🧪 Experiments</h3><ul id="experiments"></ul></div>
 </div>
 
-<div class="matrix-box">
-<h3>🎯 Strategic Bets</h3>
-<ul id="strategicBets"></ul>
+<h2 style="margin-top:40px">5. How to Read the Result</h2>
+<div class="legend">
+<strong>Model Rank</strong> is the framework's original assessment.
+<strong>Management Rank</strong> reflects subsequent human judgment.
+Moving an opportunity does not rewrite the model's original score.
+This creates a visible distinction between analytical prioritization and
+executive judgment.
 </div>
 
-<div class="matrix-box">
-<h3>🔧 Enablers</h3>
-<ul id="enablers"></ul>
-</div>
-
-<div class="matrix-box">
-<h3>🧪 Experiments</h3>
-<ul id="experiments"></ul>
-</div>
-
-</div>
-
-
-<h2 style="margin-top:40px;">5. How the Scoring Works</h2>
-
-<p class="methodology">
-Each opportunity is assessed across six factors:
-<strong>Business Value, Customer Value, Feasibility, Time-to-Impact,
-Implementation Complexity and Risk.</strong>
-The model also considers the stated business objective, business model,
-company size and keywords contained in the business challenges.
+<p class="method">
+The model combines strategic fit, challenge relevance, available-data signals,
+business model, business value, customer value, feasibility, speed,
+implementation complexity and risk. Scores are directional prioritization aids,
+not forecasts of ROI.
 </p>
 
-<p class="methodology">
-The score is a prioritization aid, not a prediction of ROI.
-A real implementation decision would require validation of data availability,
-process economics, integration requirements, organizational readiness,
-regulatory considerations and expected financial impact.
-</p>
-
-<p class="methodology">
-<strong>V2 uses a transparent rules-based strategy model rather than a live
-generative-AI model.</strong> This makes the prioritization logic inspectable.
-A future version will combine this framework with AI-generated,
-company-specific opportunity analysis.
+<p class="method">
+<strong>V2.1 deliberately uses a transparent rules-based model.</strong>
+A future AI-powered version can generate company-specific opportunities and
+reasoning while retaining this structured prioritization framework.
 </p>
 
 </div>
-
 </div>
 
-<footer>
-AI Business Opportunity Mapper · Javier Ortiz Sanz
-</footer>
-
+<footer>AI Business Opportunity Mapper · Javier Ortiz Sanz</footer>
 
 <script>
 
 const opportunities = [
-
 {
 name:"AI Sales Research & Lead Intelligence",
 area:"Revenue Growth",
-keywords:["sales","lead","leads","prospect","prospects","acquisition","pipeline","growth","revenue"],
-value:9,
-customer:6,
-feasibility:8,
-speed:8,
-complexity:4,
-risk:3,
-action:"Pilot the workflow with one sales team and compare research time, qualified opportunities and conversion against the current process."
+themes:["sales","prospect","lead","acquisition","pipeline","business development","research"],
+data:["crm","customer","sales","lead","website"],
+value:9,customer:6,feasibility:8,speed:8,complexity:4,risk:3,
+action:"Pilot with one sales team. Measure research time, qualified opportunities and conversion against the existing process."
 },
-
 {
 name:"Personalized Offers & Recommendations",
 area:"Revenue Growth",
-keywords:["conversion","personalization","recommendation","cross-sell","upsell","sales","revenue","customer"],
-value:9,
-customer:8,
-feasibility:7,
-speed:6,
-complexity:6,
-risk:4,
-action:"Identify one high-volume customer journey and test whether behavioral or transactional data can support meaningful personalization."
+themes:["personalization","conversion","upsell","cross sell","recommendation","relevance","engagement"],
+data:["transaction","behaviour","behavior","customer","purchase","crm"],
+value:9,customer:9,feasibility:7,speed:6,complexity:6,risk:4,
+action:"Select one high-volume customer journey and test whether behavioural or transactional data can improve relevance and conversion."
 },
-
 {
-name:"Pricing & Conversion Optimization",
+name:"Pricing & Monetization Optimization",
 area:"Revenue Growth",
-keywords:["pricing","price","conversion","margin","revenue","yield","monetization"],
-value:9,
-customer:6,
-feasibility:6,
-speed:6,
-complexity:7,
-risk:5,
-action:"Select one product or customer segment and establish a baseline for price, conversion and margin before testing AI-assisted optimization."
+themes:["pricing","price","margin","monetization","revenue","yield","conversion"],
+data:["pricing","transaction","sales","conversion","purchase"],
+value:10,customer:6,feasibility:6,speed:6,complexity:7,risk:5,
+action:"Establish a baseline for price, conversion and margin in one segment before testing AI-assisted optimization."
 },
-
 {
 name:"Workflow Automation",
 area:"Operational Efficiency",
-keywords:["manual","repetitive","administrative","operations","workflow","slow","processing","back office","efficiency"],
-value:8,
-customer:5,
-feasibility:9,
-speed:9,
-complexity:3,
-risk:3,
-action:"Map one repetitive high-volume process, measure current labor time and automate the lowest-risk steps first."
+themes:["manual","repetitive","administrative","workflow","slow","processing","back office","hours","time consuming"],
+data:["documents","email","workflow","process","system"],
+value:8,customer:5,feasibility:9,speed:9,complexity:3,risk:3,
+action:"Map one high-volume repetitive process, quantify current labour time and automate the lowest-risk steps first."
 },
-
 {
 name:"Document Processing & Extraction",
 area:"Operational Efficiency",
-keywords:["document","documents","invoice","contract","forms","paperwork","processing","data entry"],
-value:7,
-customer:5,
-feasibility:9,
-speed:8,
-complexity:4,
-risk:4,
-action:"Collect a representative sample of documents and test extraction accuracy before integrating the workflow with production systems."
+themes:["document","invoice","contract","forms","paperwork","data entry","processing"],
+data:["document","pdf","invoice","contract","forms"],
+value:7,customer:5,feasibility:9,speed:8,complexity:4,risk:4,
+action:"Test extraction accuracy on a representative sample before connecting the workflow to production systems."
 },
-
 {
 name:"Internal Knowledge Assistant",
 area:"Operational Efficiency",
-keywords:["knowledge","information","search","employees","internal","training","documentation","questions"],
-value:7,
-customer:5,
-feasibility:8,
-speed:8,
-complexity:4,
-risk:4,
-action:"Start with a controlled set of approved internal documents and measure answer quality, employee usage and time saved."
+themes:["knowledge","internal information","training","documentation","employees","find information","questions"],
+data:["documents","knowledge","manual","policy","documentation"],
+value:7,customer:5,feasibility:8,speed:8,complexity:4,risk:4,
+action:"Start with approved internal documents and measure answer quality, adoption and employee time saved."
 },
-
+{
+name:"Conversational Search & Discovery",
+area:"Customer Experience",
+themes:["search","find","discovery","listings","catalog","navigation","relevant","results","matching"],
+data:["listings","catalog","product","search","behaviour","behavior"],
+value:9,customer:10,feasibility:7,speed:7,complexity:6,risk:4,
+action:"Prototype conversational discovery on a limited catalogue and compare engagement and task completion with traditional search."
+},
 {
 name:"Personalized Customer Journey",
 area:"Customer Experience",
-keywords:["customer experience","engagement","personalization","journey","retention","conversion","customer"],
-value:8,
-customer:9,
-feasibility:7,
-speed:6,
-complexity:6,
-risk:4,
-action:"Choose one important customer journey and identify where personalization could remove friction or improve relevance."
+themes:["customer experience","journey","personalization","engagement","retention","relevance","conversion"],
+data:["crm","behaviour","behavior","transaction","customer","website"],
+value:8,customer:9,feasibility:7,speed:6,complexity:6,risk:4,
+action:"Identify one high-friction journey and test where personalization can improve relevance or remove friction."
 },
-
-{
-name:"Conversational Discovery Assistant",
-area:"Customer Experience",
-keywords:["search","discovery","catalog","products","listings","navigation","customer","recommendation"],
-value:8,
-customer:9,
-feasibility:7,
-speed:7,
-complexity:6,
-risk:4,
-action:"Prototype conversational discovery on a limited dataset and compare task completion and engagement with traditional search."
-},
-
 {
 name:"AI Customer Support Agent",
 area:"Customer Support & Service",
-keywords:["support","tickets","ticket","email","emails","requests","service","contact center","customer service","repetitive"],
-value:9,
-customer:8,
-feasibility:8,
-speed:9,
-complexity:5,
-risk:5,
-action:"Identify the highest-volume repetitive support requests and automate a narrow set with clear escalation to human agents."
+themes:["support","ticket","email","repetitive request","customer service","contact center","response time","volume"],
+data:["ticket","email","chat","knowledge","support","conversation"],
+value:9,customer:8,feasibility:8,speed:9,complexity:5,risk:5,
+action:"Automate a narrow group of high-volume repetitive requests with explicit escalation to human agents."
 },
-
 {
 name:"Customer-Service Agent Copilot",
 area:"Customer Support & Service",
-keywords:["support","agent","agents","service","calls","tickets","response","customer service"],
-value:8,
-customer:8,
-feasibility:9,
-speed:9,
-complexity:4,
-risk:3,
-action:"Pilot AI-assisted answers and conversation summaries with a small support team while keeping agents responsible for final responses."
+themes:["support","agent","calls","ticket","response","customer service","service team"],
+data:["ticket","email","call","conversation","knowledge","support"],
+value:8,customer:8,feasibility:9,speed:9,complexity:4,risk:3,
+action:"Pilot suggested responses and conversation summaries while keeping agents responsible for final decisions."
 },
-
 {
 name:"Support Quality & Sentiment Intelligence",
 area:"Customer Support & Service",
-keywords:["quality","sentiment","complaints","calls","support","service","satisfaction","feedback"],
-value:7,
-customer:8,
-feasibility:8,
-speed:7,
-complexity:5,
-risk:4,
-action:"Analyze a sample of historical conversations to identify recurring issues, sentiment patterns and coaching opportunities."
+themes:["complaint","sentiment","quality","satisfaction","feedback","calls","support"],
+data:["call","conversation","ticket","feedback","survey","email"],
+value:7,customer:8,feasibility:8,speed:7,complexity:5,risk:4,
+action:"Analyze historical interactions to identify recurring issues, sentiment patterns and coaching opportunities."
 },
-
 {
 name:"Predictive Churn & Retention Intelligence",
 area:"Decision Intelligence",
-keywords:["churn","retention","cancel","cancellation","loyalty","customers leaving","renewal"],
-value:9,
-customer:7,
-feasibility:6,
-speed:5,
-complexity:7,
-risk:5,
-action:"Define churn precisely, identify historical signals and test whether existing customer data can reliably identify elevated risk."
+themes:["churn","retention","leaving","cancel","renewal","loyalty","declining retention","attrition"],
+data:["crm","subscription","transaction","usage","customer","renewal"],
+value:10,customer:8,feasibility:6,speed:5,complexity:7,risk:5,
+action:"Define churn precisely, identify historical signals and test whether existing data can identify elevated risk early enough to act."
 },
-
 {
 name:"AI Market & Competitive Intelligence",
 area:"Decision Intelligence",
-keywords:["competitor","competition","market","research","intelligence","strategy","international","expansion"],
-value:8,
-customer:5,
-feasibility:8,
-speed:8,
-complexity:4,
-risk:3,
-action:"Define a recurring management question and build a controlled intelligence workflow using trusted internal and external sources."
+themes:["competitor","competition","market","research","international","expansion","strategy","market intelligence"],
+data:["market","competitor","research","documents","web"],
+value:8,customer:5,feasibility:8,speed:8,complexity:4,risk:3,
+action:"Choose a recurring management question and build a controlled intelligence workflow around trusted sources."
 },
-
 {
 name:"Forecasting & Predictive Analytics",
 area:"Decision Intelligence",
-keywords:["forecast","forecasting","demand","inventory","planning","prediction","capacity","sales forecast"],
-value:8,
-customer:5,
-feasibility:6,
-speed:5,
-complexity:7,
-risk:5,
-action:"Select one decision with sufficient historical data and benchmark AI-assisted forecasting against the existing method."
+themes:["forecast","demand","inventory","planning","capacity","prediction","forecasting"],
+data:["historical","sales","inventory","transaction","demand"],
+value:8,customer:5,feasibility:6,speed:5,complexity:7,risk:5,
+action:"Select one decision with sufficient historical data and benchmark AI-assisted forecasting against the current method."
 },
-
 {
 name:"AI-Enabled Product or Service",
 area:"Strategic Advantage & New Business Models",
-keywords:["new product","innovation","new revenue","business model","product","service","competitive advantage"],
-value:10,
-customer:9,
-feasibility:5,
-speed:4,
-complexity:8,
-risk:6,
-action:"Define one customer problem that AI could solve materially better than existing alternatives and test willingness to use or pay before building at scale."
+themes:["new product","new revenue","innovation","business model","competitive advantage","new service"],
+data:["customer","product","transaction","usage","market"],
+value:10,customer:9,feasibility:5,speed:4,complexity:8,risk:6,
+action:"Identify a customer problem AI could solve materially better and test willingness to use or pay before building at scale."
 },
-
 {
 name:"AI Agent for Customer Tasks",
 area:"Strategic Advantage & New Business Models",
-keywords:["agent","automation","transaction","booking","purchase","workflow","customer task"],
-value:9,
-customer:9,
-feasibility:5,
-speed:4,
-complexity:8,
-risk:7,
-action:"Choose one bounded customer task with reversible actions and prototype it with explicit confirmation and human fallback."
+themes:["agent","booking","transaction","purchase","customer task","automation","action"],
+data:["customer","transaction","workflow","product","account"],
+value:9,customer:9,feasibility:5,speed:4,complexity:8,risk:7,
+action:"Choose one bounded, reversible customer task and prototype it with confirmation controls and human fallback."
 }
-
 ];
 
-
-const objectiveArea = {
+const objectiveArea={
 "Grow revenue":"Revenue Growth",
 "Improve operational efficiency":"Operational Efficiency",
 "Improve customer experience":"Customer Experience",
@@ -621,338 +328,239 @@ const objectiveArea = {
 "Develop new products or business models":"Strategic Advantage & New Business Models"
 };
 
+let current=[];
+let originalRanks={};
+let adjustments={};
 
-function escapeHTML(value) {
-return String(value)
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
+function esc(v){
+return String(v).replaceAll("&","&amp;").replaceAll("<","&lt;")
+.replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
 }
 
-
-function challengeMatches(text, keywords) {
-
-let matches = 0;
-
-keywords.forEach(keyword => {
-if(text.includes(keyword)) matches++;
-});
-
-return Math.min(matches,3);
+function countSignals(text,terms){
+let n=0;
+terms.forEach(t=>{if(text.includes(t))n++});
+return Math.min(n,5);
 }
 
-
-function classify(o) {
-
-if(o.feasibility >= 8 && o.speed >= 8 && o.complexity <= 5)
-return "Quick Win";
-
-if(o.value >= 9 && (o.complexity >= 7 || o.speed <= 5))
-return "Strategic Bet";
-
-if(
-o.name.includes("Knowledge") ||
-o.name.includes("Document") ||
-o.name.includes("Intelligence")
-)
-return "Enabler";
-
-return "Experiment";
+function classify(o){
+if(o.feasibility>=8&&o.speed>=8&&o.complexity<=5)return"Quick Win";
+if(o.value>=9&&(o.complexity>=7||o.speed<=5))return"Strategic Bet";
+if(o.name.includes("Knowledge")||o.name.includes("Document")||o.name.includes("Intelligence"))return"Enabler";
+return"Experiment";
 }
 
+function generateMap(){
 
-function generateMap() {
+const company=document.getElementById("company").value.trim()||"The organization";
+const industry=document.getElementById("industry").value.trim()||"the selected industry";
+const model=document.getElementById("model").value;
+const size=document.getElementById("size").value;
+const objective=document.getElementById("objective").value;
+const challenges=document.getElementById("challenges").value.trim();
+const customers=document.getElementById("customers").value.trim()||"its customers";
+const data=document.getElementById("data").value.trim();
 
-const company =
-document.getElementById("company").value.trim() || "The organization";
+const challengeText=(challenges+" "+customers).toLowerCase();
+const dataText=data.toLowerCase();
 
-const industry =
-document.getElementById("industry").value.trim() || "the selected industry";
+current=opportunities.map(o=>{
 
-const model =
-document.getElementById("model").value;
+const challengeHits=countSignals(challengeText,o.themes);
+const dataHits=countSignals(dataText,o.data);
 
-const size =
-document.getElementById("size").value;
+let strategicFit=o.area===objectiveArea[objective]?20:0;
+let challengeFit=challengeHits*8;
+let dataFit=dataHits*4;
 
-const objective =
-document.getElementById("objective").value;
+let modelFit=0;
+if(model==="Marketplace / Platform"&&
+(o.name.includes("Search")||o.name.includes("Pricing")||o.name.includes("Personalized")))modelFit=7;
+if(model==="B2B"&&(o.name.includes("Sales")||o.name.includes("Knowledge")||o.name.includes("Market")))modelFit=6;
+if(model==="E-commerce"&&(o.name.includes("Personalized")||o.name.includes("Pricing")||o.name.includes("Support")))modelFit=6;
+if(model==="Professional Services"&&(o.name.includes("Knowledge")||o.name.includes("Document")||o.name.includes("Market")))modelFit=6;
 
-const challenges =
-document.getElementById("challenges").value.trim();
+let sizeFit=0;
+if(size==="Startup / Small Business"&&o.complexity>=8)sizeFit=-6;
+if(size==="Large Enterprise"&&o.name.includes("Workflow"))sizeFit=3;
 
-const customers =
-document.getElementById("customers").value.trim() || "its customers";
+const fundamentals=
+(o.value*1.5)+(o.customer*.8)+(o.feasibility*1.2)+(o.speed*.8)
+-(o.complexity*.7)-(o.risk*.5);
 
-const challengeText =
-(challenges + " " + industry + " " + customers).toLowerCase();
+let score=Math.round(fundamentals+strategicFit+challengeFit+dataFit+modelFit+sizeFit);
+score=Math.max(0,Math.min(100,score));
 
+let reasons=[];
+if(strategicFit)reasons.push("direct alignment with the primary business objective");
+if(challengeHits)reasons.push("strong relevance to the challenges described");
+if(dataHits)reasons.push("supporting data or digital assets appear to be available");
+if(modelFit)reasons.push("good fit with the business model");
+if(!challengeHits)reasons.push("limited direct evidence in the stated challenges");
 
-let assessed = opportunities.map(o => {
-
-let objectiveBonus =
-o.area === objectiveArea[objective] ? 12 : 0;
-
-let keywordBonus =
-challengeMatches(challengeText,o.keywords) * 4;
-
-let modelBonus = 0;
-
-if(
-model === "Marketplace / Platform" &&
-(
-o.name.includes("Discovery") ||
-o.name.includes("Pricing") ||
-o.name.includes("Personalized")
-)
-) modelBonus = 5;
-
-if(
-model === "B2B" &&
-(
-o.name.includes("Sales") ||
-o.name.includes("Knowledge") ||
-o.name.includes("Market")
-)
-) modelBonus = 4;
-
-if(
-model === "E-commerce" &&
-(
-o.name.includes("Personalized") ||
-o.name.includes("Pricing") ||
-o.name.includes("Support")
-)
-) modelBonus = 4;
-
-if(
-model === "Professional Services" &&
-(
-o.name.includes("Knowledge") ||
-o.name.includes("Document") ||
-o.name.includes("Market")
-)
-) modelBonus = 4;
-
-
-let sizeAdjustment = 0;
-
-if(
-size === "Startup / Small Business" &&
-o.complexity >= 8
-) sizeAdjustment = -5;
-
-if(
-size === "Large Enterprise" &&
-o.name.includes("Workflow")
-) sizeAdjustment = 3;
-
-
-let base =
-(o.value * 3) +
-(o.customer * 1.5) +
-(o.feasibility * 2) +
-(o.speed * 1.5) -
-(o.complexity * 1.2) -
-(o.risk * 0.8);
-
-let score =
-Math.round(
-base +
-objectiveBonus +
-keywordBonus +
-modelBonus +
-sizeAdjustment
-);
-
-score = Math.max(0,Math.min(100,score));
-
-
-return {
-...o,
-score:score,
+return{
+...o,score,challengeHits,dataHits,modelFit,
 classification:classify(o),
-matches:challengeMatches(challengeText,o.keywords)
+reason:reasons
 };
-
 });
 
+current.sort((a,b)=>b.score-a.score);
 
-assessed.sort((a,b)=>b.score-a.score);
+originalRanks={};
+adjustments={};
 
-const top = assessed.slice(0,5);
+current.forEach((o,i)=>{
+originalRanks[o.name]=i+1;
+adjustments[o.name]=0;
+});
 
+current=current.slice(0,7);
 
-let summaryText =
-"<strong>" + escapeHTML(company) + "</strong> operates in <strong>" +
-escapeHTML(industry) + "</strong> using a <strong>" +
-escapeHTML(model) + "</strong> model. The primary objective is to <strong>" +
-escapeHTML(objective.toLowerCase()) + "</strong>.";
+let detected=[];
+current.forEach(o=>{
+if(o.challengeHits>0)detected.push(o.area);
+});
+detected=[...new Set(detected)];
 
-if(challenges) {
-summaryText +=
-" The analysis has also considered the stated challenges: <em>" +
-escapeHTML(challenges) + "</em>.";
-}
-
-summaryText +=
-"<br><br>The highest-priority opportunity identified by the V2 framework is <strong>" +
-escapeHTML(top[0].name) +
-"</strong>, with a directional priority score of <strong>" +
-top[0].score +
-"/100</strong>. This ranking reflects strategic fit, potential value, feasibility, speed, complexity, risk and signals found in the business context.";
-
-document.getElementById("summary").innerHTML = summaryText;
-
-
-let topHTML = "";
-
-top.forEach((o,index)=> {
-
-let reason = "";
-
-if(o.area === objectiveArea[objective])
-reason += "It directly supports the stated primary objective. ";
-
-if(o.matches > 0)
-reason += "The business description contains signals relevant to this use case. ";
-
-reason +=
-"It combines a business-value score of " +
-o.value +
-"/10 with feasibility of " +
-o.feasibility +
-"/10 and time-to-impact of " +
-o.speed +
-"/10.";
-
-topHTML +=
-'<div class="top-opportunity">' +
-
-'<div class="rank">PRIORITY #' + (index+1) + '</div>' +
-
-'<h3>' + escapeHTML(o.name) + '</h3>' +
-
-'<div class="area">' + escapeHTML(o.area) + '</div>' +
-
-'<span class="badge">' +
-escapeHTML(o.classification) +
-'</span>' +
-
-'<div class="score-big">' +
-o.score +
-'/100</div>' +
-
-'<div class="bar"><div class="bar-fill" style="width:' +
-o.score +
-'%"></div></div>' +
-
-'<div class="score-grid">' +
-
-'<div class="score-item"><span>Business Value</span><strong>' +
-o.value +
-'/10</strong></div>' +
-
-'<div class="score-item"><span>Customer Value</span><strong>' +
-o.customer +
-'/10</strong></div>' +
-
-'<div class="score-item"><span>Feasibility</span><strong>' +
-o.feasibility +
-'/10</strong></div>' +
-
-'<div class="score-item"><span>Time to Impact</span><strong>' +
-o.speed +
-'/10</strong></div>' +
-
-'<div class="score-item"><span>Complexity</span><strong>' +
-o.complexity +
-'/10</strong></div>' +
-
-'<div class="score-item"><span>Risk</span><strong>' +
-o.risk +
-'/10</strong></div>' +
-
-'</div>' +
-
-'<div class="explanation"><strong>Why it matters:</strong> ' +
-escapeHTML(reason) +
-'</div>' +
-
-'<div class="action"><strong>Recommended first step:</strong> ' +
-escapeHTML(o.action) +
-'</div>' +
-
+document.getElementById("summary").innerHTML=
+"<strong>"+esc(company)+"</strong> is assessed as a <strong>"+esc(size)+"</strong> "+
+esc(model)+" business in <strong>"+esc(industry)+"</strong>. Its primary objective is to <strong>"+
+esc(objective.toLowerCase())+"</strong>.<br><br>"+
+"The framework found the strongest contextual signals around <strong>"+
+esc(detected.length?detected.join(", "):"the selected strategic objective")+
+"</strong>. The ranking below combines business fundamentals with the challenges and data assets you supplied."+
+'<div class="context-signals">'+
+'<span class="signal">Context-driven ranking</span>'+
+'<span class="signal">Data readiness considered</span>'+
+'<span class="signal">Management override enabled</span>'+
 '</div>';
 
+render();
+document.getElementById("results").style.display="block";
+document.getElementById("results").scrollIntoView({behavior:"smooth"});
+}
+
+function render(){
+
+const container=document.getElementById("opportunities");
+container.innerHTML="";
+
+current.forEach((o,index)=>{
+
+const adj=adjustments[o.name]||0;
+const calibrated=Math.max(0,Math.min(100,o.score+adj));
+const moved=originalRanks[o.name]!==index+1;
+
+const div=document.createElement("div");
+div.className="opportunity";
+
+div.innerHTML=
+'<div class="opportunity-top"><div>'+
+'<div class="rank">Management rank #'+(index+1)+' · Model rank #'+originalRanks[o.name]+'</div>'+
+'<h3>'+esc(o.name)+'</h3>'+
+'<div class="area">'+esc(o.area)+'</div>'+
+'</div><div class="score">'+calibrated+'/100<small>calibrated score</small></div></div>'+
+
+'<div class="badges"><span class="badge">'+esc(o.classification)+'</span>'+
+(moved?'<span class="badge">Management reordered</span>':'')+
+(adj!==0?'<span class="badge">'+(adj>0?'+':'')+adj+' management adjustment</span>':'')+
+'</div>'+
+
+'<div class="bar"><div class="fill" style="width:'+calibrated+'%"></div></div>'+
+
+'<div class="score-grid">'+
+'<div class="metric"><span>Business Value</span><strong>'+o.value+'/10</strong></div>'+
+'<div class="metric"><span>Customer Value</span><strong>'+o.customer+'/10</strong></div>'+
+'<div class="metric"><span>Feasibility</span><strong>'+o.feasibility+'/10</strong></div>'+
+'<div class="metric"><span>Time to Impact</span><strong>'+o.speed+'/10</strong></div>'+
+'<div class="metric"><span>Complexity</span><strong>'+o.complexity+'/10</strong></div>'+
+'<div class="metric"><span>Risk</span><strong>'+o.risk+'/10</strong></div>'+
+'</div>'+
+
+'<div class="reason"><strong>Why it ranked here:</strong> '+
+esc(o.reason.length?o.reason.join("; "):"strong underlying business and feasibility characteristics")+
+'.</div>'+
+
+'<div class="action"><strong>Recommended first step:</strong> '+esc(o.action)+'</div>'+
+
+'<div class="calibration">'+
+'<div class="calibration-title">Management calibration</div>'+
+'<div class="controls">'+
+'<button class="control" onclick="moveItem('+index+',-1)">↑ Move up</button>'+
+'<button class="control" onclick="moveItem('+index+',1)">↓ Move down</button>'+
+'<button class="control boost" onclick="adjustScore('+index+',5)">More important +5</button>'+
+'<button class="control reduce" onclick="adjustScore('+index+',-5)">Less important −5</button>'+
+'<button class="control" onclick="resetItem('+index+')">Reset score</button>'+
+'</div>'+
+'<div class="override-note">Model score: '+o.score+
+'/100. Management adjustments remain visible rather than replacing the original assessment.</div>'+
+'</div>';
+
+container.appendChild(div);
 });
 
-document.getElementById("topOpportunities").innerHTML = topHTML;
+renderPortfolio();
+}
 
+function moveItem(index,direction){
+const target=index+direction;
+if(target<0||target>=current.length)return;
+[current[index],current[target]]=[current[target],current[index]];
+render();
+}
 
-const groups = {
+function adjustScore(index,amount){
+const name=current[index].name;
+adjustments[name]=(adjustments[name]||0)+amount;
+adjustments[name]=Math.max(-20,Math.min(20,adjustments[name]));
+render();
+}
+
+function resetItem(index){
+adjustments[current[index].name]=0;
+render();
+}
+
+function renderPortfolio(){
+
+const groups={
 "Quick Win":[],
 "Strategic Bet":[],
 "Enabler":[],
 "Experiment":[]
 };
 
-assessed.forEach(o => {
-groups[o.classification].push(o);
+current.forEach((o,index)=>{
+groups[o.classification].push({
+name:o.name,
+rank:index+1,
+score:Math.max(0,Math.min(100,o.score+(adjustments[o.name]||0)))
+});
 });
 
-
-function fillList(id,items) {
-
-const element =
-document.getElementById(id);
-
-element.innerHTML = "";
-
-items.slice(0,5).forEach(o => {
-
-const li =
-document.createElement("li");
-
-li.textContent =
-o.name + " — " + o.score + "/100";
-
-element.appendChild(li);
-
-});
-
-if(items.length === 0) {
-
-const li =
-document.createElement("li");
-
-li.textContent =
-"No opportunities currently classified here.";
-
-element.appendChild(li);
-
+fill("quick",groups["Quick Win"]);
+fill("strategic",groups["Strategic Bet"]);
+fill("enablers",groups["Enabler"]);
+fill("experiments",groups["Experiment"]);
 }
 
+function fill(id,items){
+const el=document.getElementById(id);
+el.innerHTML="";
+
+if(!items.length){
+el.innerHTML="<li>No current opportunities in this category.</li>";
+return;
 }
 
-
-fillList("quickWins",groups["Quick Win"]);
-fillList("strategicBets",groups["Strategic Bet"]);
-fillList("enablers",groups["Enabler"]);
-fillList("experiments",groups["Experiment"]);
-
-
-document.getElementById("results").style.display = "block";
-
-document.getElementById("results").scrollIntoView({
-behavior:"smooth"
+items.forEach(o=>{
+const li=document.createElement("li");
+li.textContent="#"+o.rank+" "+o.name+" — "+o.score+"/100";
+el.appendChild(li);
 });
-
 }
 
 </script>
-
 </body>
 </html>
