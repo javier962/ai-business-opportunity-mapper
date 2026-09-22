@@ -27,9 +27,144 @@ button{border:none;border-radius:8px;font-weight:bold;cursor:pointer}
 .toolbar{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
 .case-status{font-size:13px;color:#64748b;margin-top:8px}
 #results{display:none}
+
 .summary{background:#eff6ff;border-left:5px solid #2563eb;padding:20px;border-radius:8px;line-height:1.65}
 .context-signals{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
 .signal{background:#e0e7ff;padding:6px 10px;border-radius:18px;font-size:12px;font-weight:bold}
+
+/* V2.4 EXECUTIVE SNAPSHOT */
+
+.snapshot{
+margin-top:28px;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:white;
+border-radius:16px;
+padding:25px;
+}
+
+.snapshot-head{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:20px;
+margin-bottom:18px;
+}
+
+.snapshot-eyebrow{
+font-size:11px;
+font-weight:bold;
+letter-spacing:1px;
+text-transform:uppercase;
+color:#93c5fd;
+margin-bottom:6px;
+}
+
+.snapshot h2{
+margin:0;
+font-size:24px;
+}
+
+.snapshot-subtitle{
+color:#cbd5e1;
+font-size:13px;
+margin-top:6px;
+line-height:1.45;
+}
+
+.snapshot-live{
+font-size:11px;
+font-weight:bold;
+padding:6px 10px;
+border-radius:20px;
+background:#1e40af;
+white-space:nowrap;
+}
+
+.snapshot-list{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+}
+
+.snapshot-item{
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.12);
+border-radius:12px;
+padding:16px;
+min-width:0;
+}
+
+.snapshot-rank{
+font-size:25px;
+font-weight:bold;
+color:#93c5fd;
+line-height:1;
+margin-bottom:10px;
+}
+
+.snapshot-name{
+font-size:16px;
+font-weight:bold;
+line-height:1.25;
+min-height:40px;
+}
+
+.snapshot-area{
+font-size:11px;
+color:#cbd5e1;
+margin-top:7px;
+line-height:1.35;
+}
+
+.snapshot-bottom{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:8px;
+margin-top:13px;
+}
+
+.snapshot-score{
+font-size:21px;
+font-weight:bold;
+}
+
+.snapshot-class{
+font-size:10px;
+font-weight:bold;
+background:rgba(255,255,255,.12);
+padding:5px 7px;
+border-radius:12px;
+text-align:right;
+}
+
+.snapshot-footer{
+display:grid;
+grid-template-columns:1.5fr 1fr 1fr;
+gap:10px;
+margin-top:14px;
+}
+
+.snapshot-stat{
+background:rgba(255,255,255,.06);
+border-radius:10px;
+padding:10px 12px;
+}
+
+.snapshot-stat span{
+display:block;
+font-size:9px;
+text-transform:uppercase;
+letter-spacing:.5px;
+color:#94a3b8;
+margin-bottom:4px;
+}
+
+.snapshot-stat strong{
+font-size:12px;
+line-height:1.3;
+}
+
 .opportunity{border:1px solid #e2e8f0;border-radius:14px;padding:24px;margin:18px 0}
 .opportunity-top{display:flex;justify-content:space-between;gap:20px}
 .rank{font-size:12px;font-weight:bold;color:#64748b;text-transform:uppercase}
@@ -54,12 +189,14 @@ button{border:none;border-radius:8px;font-weight:bold;cursor:pointer}
 .boost{background:#ecfdf5;color:#047857}
 .reduce{background:#fff1f2;color:#be123c}
 .override-note{font-size:12px;color:#64748b;margin-top:10px}
+
 .matrix{display:grid;grid-template-columns:1fr 1fr;gap:15px}
 .matrix-box{background:#f8fafc;padding:19px;border-radius:10px;min-height:145px}
 .matrix-box h3{margin-top:0}
 .matrix-box li{margin-bottom:8px}
 .legend{background:#f8fafc;padding:18px;border-radius:10px;line-height:1.6;color:#475569}
 .method{font-size:14px;color:#64748b;line-height:1.65}
+
 .saved-case{border:1px solid #e2e8f0;border-radius:12px;padding:17px;margin:12px 0}
 .saved-case h3{margin:0 0 6px}
 .saved-meta{font-size:13px;color:#64748b;line-height:1.5}
@@ -81,6 +218,7 @@ button{border:none;border-radius:8px;font-weight:bold;cursor:pointer}
 footer{text-align:center;padding:35px;color:#64748b;font-size:13px}
 
 @media(max-width:700px){
+header{padding:38px 18px}
 header h1{font-size:30px}
 .card{padding:20px}
 .score-grid{grid-template-columns:1fr 1fr}
@@ -89,6 +227,93 @@ header h1{font-size:30px}
 .score{text-align:left;margin-top:10px}
 .roadmap-phases{grid-template-columns:1fr}
 .roadmap-header{display:block}
+
+/* Snapshot intentionally compact for phone screenshots */
+.snapshot{
+padding:17px;
+margin-top:22px;
+border-radius:14px;
+}
+
+.snapshot-head{
+margin-bottom:12px;
+}
+
+.snapshot h2{
+font-size:20px;
+}
+
+.snapshot-subtitle{
+font-size:11px;
+margin-top:4px;
+}
+
+.snapshot-live{
+font-size:9px;
+padding:5px 7px;
+}
+
+.snapshot-list{
+display:block;
+}
+
+.snapshot-item{
+display:grid;
+grid-template-columns:36px 1fr auto;
+align-items:center;
+gap:9px;
+padding:10px 11px;
+margin-bottom:7px;
+}
+
+.snapshot-rank{
+font-size:21px;
+margin:0;
+}
+
+.snapshot-name{
+font-size:13px;
+min-height:auto;
+}
+
+.snapshot-area{
+font-size:9px;
+margin-top:3px;
+}
+
+.snapshot-bottom{
+display:block;
+text-align:right;
+margin:0;
+}
+
+.snapshot-score{
+font-size:17px;
+}
+
+.snapshot-class{
+font-size:8px;
+margin-top:3px;
+display:inline-block;
+}
+
+.snapshot-footer{
+grid-template-columns:1fr 1fr 1fr;
+gap:6px;
+margin-top:10px;
+}
+
+.snapshot-stat{
+padding:8px;
+}
+
+.snapshot-stat span{
+font-size:7px;
+}
+
+.snapshot-stat strong{
+font-size:9px;
+}
 }
 
 @media print{
@@ -97,7 +322,7 @@ body{background:white}
 .container{max-width:none;margin:0;padding:0}
 .card{box-shadow:none}
 #results{display:block!important}
-.opportunity,.roadmap-opportunity{break-inside:avoid}
+.opportunity,.roadmap-opportunity,.snapshot{break-inside:avoid}
 }
 </style>
 </head>
@@ -111,7 +336,7 @@ Turn business challenges, objectives and available data into a prioritized
 portfolio of practical AI opportunities — calibrate them with management
 judgment and convert priorities into a 90-day execution plan.
 </p>
-<div class="version">V2.3 · From Opportunity to Action</div>
+<div class="version">V2.4 · Executive Snapshot</div>
 </header>
 
 <div class="container">
@@ -131,9 +356,13 @@ judgment and convert priorities into a 90-day execution plan.
 
 <label>Business Model</label>
 <select id="model">
-<option>B2B</option><option>B2C</option><option>Marketplace / Platform</option>
-<option>SaaS / Subscription</option><option>E-commerce</option>
-<option>Professional Services</option><option>Other</option>
+<option>B2B</option>
+<option>B2C</option>
+<option>Marketplace / Platform</option>
+<option>SaaS / Subscription</option>
+<option>E-commerce</option>
+<option>Professional Services</option>
+<option>Other</option>
 </select>
 
 <label>Company Size</label>
@@ -167,12 +396,16 @@ judgment and convert priorities into a 90-day execution plan.
 <button class="success" onclick="saveCase()">Save Case</button>
 <button class="secondary" onclick="newCase()">New Case</button>
 </div>
+
 <div id="caseStatus" class="case-status">Unsaved case</div>
 </div>
 
 <div class="card saved-card">
 <h2>My Saved Cases</h2>
-<p class="subtitle">Cases are stored locally in this browser. They do not synchronize automatically between devices and can be lost if browser storage is cleared.</p>
+<p class="subtitle">
+Cases are stored locally in this browser. They do not synchronize automatically
+between devices and can be lost if browser storage is cleared.
+</p>
 <div id="savedCases"></div>
 </div>
 
@@ -180,6 +413,22 @@ judgment and convert priorities into a 90-day execution plan.
 
 <h2>2. Executive Assessment</h2>
 <div id="summary" class="summary"></div>
+
+<div id="executiveSnapshot" class="snapshot">
+<div class="snapshot-head">
+<div>
+<div class="snapshot-eyebrow">Executive view</div>
+<h2>AI Opportunity Snapshot</h2>
+<div class="snapshot-subtitle">
+Management-calibrated priorities at a glance
+</div>
+</div>
+<div class="snapshot-live">LIVE PRIORITIES</div>
+</div>
+
+<div id="snapshotList" class="snapshot-list"></div>
+<div id="snapshotFooter" class="snapshot-footer"></div>
+</div>
 
 <div class="toolbar">
 <button class="success" onclick="saveCase()">Save Current Case</button>
@@ -189,15 +438,34 @@ judgment and convert priorities into a 90-day execution plan.
 </div>
 
 <h2 style="margin-top:38px">3. Prioritized AI Opportunities</h2>
-<p class="subtitle">The framework generates the initial ranking. Management can then reorder or adjust priorities while preserving the original model assessment.</p>
+<p class="subtitle">
+The framework generates the initial ranking. Management can then reorder or
+adjust priorities while preserving the original model assessment.
+</p>
 <div id="opportunities"></div>
 
 <h2 style="margin-top:40px">4. Management-Calibrated Portfolio</h2>
+
 <div class="matrix">
-<div class="matrix-box"><h3>⚡ Quick Wins</h3><ul id="quick"></ul></div>
-<div class="matrix-box"><h3>🎯 Strategic Bets</h3><ul id="strategic"></ul></div>
-<div class="matrix-box"><h3>🔧 Enablers</h3><ul id="enablers"></ul></div>
-<div class="matrix-box"><h3>🧪 Experiments</h3><ul id="experiments"></ul></div>
+<div class="matrix-box">
+<h3>⚡ Quick Wins</h3>
+<ul id="quick"></ul>
+</div>
+
+<div class="matrix-box">
+<h3>🎯 Strategic Bets</h3>
+<ul id="strategic"></ul>
+</div>
+
+<div class="matrix-box">
+<h3>🔧 Enablers</h3>
+<ul id="enablers"></ul>
+</div>
+
+<div class="matrix-box">
+<h3>🧪 Experiments</h3>
+<ul id="experiments"></ul>
+</div>
 </div>
 
 <h2 style="margin-top:40px">5. 90-Day AI Action Plan</h2>
@@ -206,9 +474,11 @@ A practical execution roadmap for the management-calibrated Top 3 opportunities.
 Move from validation to controlled pilots and then to an evidence-based
 Scale, Iterate or Stop decision.
 </p>
+
 <div id="roadmap"></div>
 
 <h2 style="margin-top:40px">6. How to Read the Result</h2>
+
 <div class="legend">
 <strong>Model Rank</strong> is the framework's original recommendation.
 <strong>Management Rank</strong> reflects subsequent human judgment.
@@ -223,33 +493,50 @@ not forecasts of ROI.
 </p>
 
 <p class="method">
-<strong>V2.3 uses a transparent rules-based strategy model.</strong>
+<strong>V2.4 uses a transparent rules-based strategy model.</strong>
 It is designed as a decision-support framework rather than an AI oracle:
 the model informs the decision, management owns the decision, and execution
 follows the management-calibrated portfolio.
 </p>
+
 </div>
 </div>
 
 <footer>AI Business Opportunity Mapper · Javier Ortiz Sanz</footer>
 
 <script>
+
 const opportunities=[
 {name:"AI Sales Research & Lead Intelligence",area:"Revenue Growth",themes:["sales","prospect","lead","acquisition","pipeline","business development","research"],data:["crm","customer","sales","lead","website"],value:9,customer:6,feasibility:8,speed:8,complexity:4,risk:3,action:"Pilot with one sales team. Measure research time, qualified opportunities and conversion against the existing process."},
+
 {name:"Personalized Offers & Recommendations",area:"Revenue Growth",themes:["personalization","conversion","upsell","cross sell","recommendation","relevance","engagement"],data:["transaction","behaviour","behavior","customer","purchase","crm"],value:9,customer:9,feasibility:7,speed:6,complexity:6,risk:4,action:"Select one high-volume customer journey and test whether behavioural or transactional data can improve relevance and conversion."},
+
 {name:"Pricing & Monetization Optimization",area:"Revenue Growth",themes:["pricing","price","margin","monetization","revenue","yield","conversion"],data:["pricing","transaction","sales","conversion","purchase"],value:10,customer:6,feasibility:6,speed:6,complexity:7,risk:5,action:"Establish a baseline for price, conversion and margin in one segment before testing AI-assisted optimization."},
+
 {name:"Workflow Automation",area:"Operational Efficiency",themes:["manual","repetitive","administrative","workflow","slow","processing","back office","hours","time consuming"],data:["documents","email","workflow","process","system"],value:8,customer:5,feasibility:9,speed:9,complexity:3,risk:3,action:"Map one high-volume repetitive process, quantify current labour time and automate the lowest-risk steps first."},
+
 {name:"Document Processing & Extraction",area:"Operational Efficiency",themes:["document","invoice","contract","forms","paperwork","data entry","processing"],data:["document","pdf","invoice","contract","forms"],value:7,customer:5,feasibility:9,speed:8,complexity:4,risk:4,action:"Test extraction accuracy on a representative sample before connecting the workflow to production systems."},
+
 {name:"Internal Knowledge Assistant",area:"Operational Efficiency",themes:["knowledge","internal information","training","documentation","employees","find information","questions"],data:["documents","knowledge","manual","policy","documentation"],value:7,customer:5,feasibility:8,speed:8,complexity:4,risk:4,action:"Start with approved internal documents and measure answer quality, adoption and employee time saved."},
+
 {name:"Conversational Search & Discovery",area:"Customer Experience",themes:["search","find","discovery","listings","catalog","navigation","relevant","results","matching"],data:["listings","catalog","product","search","behaviour","behavior"],value:9,customer:10,feasibility:7,speed:7,complexity:6,risk:4,action:"Prototype conversational discovery on a limited catalogue and compare engagement and task completion with traditional search."},
+
 {name:"Personalized Customer Journey",area:"Customer Experience",themes:["customer experience","journey","personalization","engagement","retention","relevance","conversion"],data:["crm","behaviour","behavior","transaction","customer","website"],value:8,customer:9,feasibility:7,speed:6,complexity:6,risk:4,action:"Identify one high-friction journey and test where personalization can improve relevance or remove friction."},
+
 {name:"AI Customer Support Agent",area:"Customer Support & Service",themes:["support","ticket","email","repetitive request","customer service","contact center","response time","volume"],data:["ticket","email","chat","knowledge","support","conversation"],value:9,customer:8,feasibility:8,speed:9,complexity:5,risk:5,action:"Automate a narrow group of high-volume repetitive requests with explicit escalation to human agents."},
+
 {name:"Customer-Service Agent Copilot",area:"Customer Support & Service",themes:["support","agent","calls","ticket","response","customer service","service team"],data:["ticket","email","call","conversation","knowledge","support"],value:8,customer:8,feasibility:9,speed:9,complexity:4,risk:3,action:"Pilot suggested responses and conversation summaries while keeping agents responsible for final decisions."},
+
 {name:"Support Quality & Sentiment Intelligence",area:"Customer Support & Service",themes:["complaint","sentiment","quality","satisfaction","feedback","calls","support"],data:["call","conversation","ticket","feedback","survey","email"],value:7,customer:8,feasibility:8,speed:7,complexity:5,risk:4,action:"Analyze historical interactions to identify recurring issues, sentiment patterns and coaching opportunities."},
+
 {name:"Predictive Churn & Retention Intelligence",area:"Decision Intelligence",themes:["churn","retention","leaving","cancel","renewal","loyalty","declining retention","attrition"],data:["crm","subscription","transaction","usage","customer","renewal"],value:10,customer:8,feasibility:6,speed:5,complexity:7,risk:5,action:"Define churn precisely, identify historical signals and test whether existing data can identify elevated risk early enough to act."},
+
 {name:"AI Market & Competitive Intelligence",area:"Decision Intelligence",themes:["competitor","competition","market","research","international","expansion","strategy","market intelligence"],data:["market","competitor","research","documents","web"],value:8,customer:5,feasibility:8,speed:8,complexity:4,risk:3,action:"Choose a recurring management question and build a controlled intelligence workflow around trusted sources."},
+
 {name:"Forecasting & Predictive Analytics",area:"Decision Intelligence",themes:["forecast","demand","inventory","planning","capacity","prediction","forecasting"],data:["historical","sales","inventory","transaction","demand"],value:8,customer:5,feasibility:6,speed:5,complexity:7,risk:5,action:"Select one decision with sufficient historical data and benchmark AI-assisted forecasting against the current method."},
+
 {name:"AI-Enabled Product or Service",area:"Strategic Advantage & New Business Models",themes:["new product","new revenue","innovation","business model","competitive advantage","new service"],data:["customer","product","transaction","usage","market"],value:10,customer:9,feasibility:5,speed:4,complexity:8,risk:6,action:"Identify a customer problem AI could solve materially better and test willingness to use or pay before building at scale."},
+
 {name:"AI Agent for Customer Tasks",area:"Strategic Advantage & New Business Models",themes:["agent","booking","transaction","purchase","customer task","automation","action"],data:["customer","transaction","workflow","product","account"],value:9,customer:9,feasibility:5,speed:4,complexity:8,risk:7,action:"Choose one bounded, reversible customer task and prototype it with confirmation controls and human fallback."}
 ];
 
@@ -262,249 +549,1358 @@ const objectiveArea={
 "Develop new products or business models":"Strategic Advantage & New Business Models"
 };
 
-let current=[],originalRanks={},adjustments={},currentCaseId=null,currentCreated=null;
+let current=[];
+let originalRanks={};
+let adjustments={};
+let currentCaseId=null;
+let currentCreated=null;
 
-function esc(v){return String(v).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;")}
-function countSignals(text,terms){let n=0;terms.forEach(t=>{if(text.includes(t))n++});return Math.min(n,5)}
+function esc(v){
+return String(v)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+}
+
+function countSignals(text,terms){
+let n=0;
+terms.forEach(t=>{
+if(text.includes(t))n++;
+});
+return Math.min(n,5);
+}
+
 function classify(o){
 if(o.feasibility>=8&&o.speed>=8&&o.complexity<=5)return"Quick Win";
 if(o.value>=9&&(o.complexity>=7||o.speed<=5))return"Strategic Bet";
-if(o.name.includes("Knowledge")||o.name.includes("Document")||o.name.includes("Intelligence"))return"Enabler";
+if(
+o.name.includes("Knowledge")||
+o.name.includes("Document")||
+o.name.includes("Intelligence")
+)return"Enabler";
 return"Experiment";
 }
 
 function getInputs(){
 return{
-caseName:caseName.value.trim(),company:company.value.trim(),industry:industry.value.trim(),
-model:model.value,size:size.value,objective:objective.value,challenges:challenges.value.trim(),
-customers:customers.value.trim(),data:data.value.trim()
+caseName:caseName.value.trim(),
+company:company.value.trim(),
+industry:industry.value.trim(),
+model:model.value,
+size:size.value,
+objective:objective.value,
+challenges:challenges.value.trim(),
+customers:customers.value.trim(),
+data:data.value.trim()
 };
 }
 
 function setInputs(x){
-caseName.value=x.caseName||"";company.value=x.company||"";industry.value=x.industry||"";
-model.value=x.model||"B2B";size.value=x.size||"Startup / Small Business";
-objective.value=x.objective||"Grow revenue";challenges.value=x.challenges||"";
-customers.value=x.customers||"";data.value=x.data||"";
+caseName.value=x.caseName||"";
+company.value=x.company||"";
+industry.value=x.industry||"";
+model.value=x.model||"B2B";
+size.value=x.size||"Startup / Small Business";
+objective.value=x.objective||"Grow revenue";
+challenges.value=x.challenges||"";
+customers.value=x.customers||"";
+data.value=x.data||"";
 }
 
 function generateMap(){
-const x=getInputs(), challengeText=(x.challenges+" "+x.customers).toLowerCase(), dataText=x.data.toLowerCase();
+
+const x=getInputs();
+
+const challengeText=(x.challenges+" "+x.customers).toLowerCase();
+const dataText=x.data.toLowerCase();
 
 current=opportunities.map(o=>{
-const challengeHits=countSignals(challengeText,o.themes),dataHits=countSignals(dataText,o.data);
-let strategicFit=o.area===objectiveArea[x.objective]?20:0,modelFit=0,sizeFit=0;
 
-if(x.model==="Marketplace / Platform"&&(o.name.includes("Search")||o.name.includes("Pricing")||o.name.includes("Personalized")))modelFit=7;
-if(x.model==="B2B"&&(o.name.includes("Sales")||o.name.includes("Knowledge")||o.name.includes("Market")))modelFit=6;
-if(x.model==="E-commerce"&&(o.name.includes("Personalized")||o.name.includes("Pricing")||o.name.includes("Support")))modelFit=6;
-if(x.model==="Professional Services"&&(o.name.includes("Knowledge")||o.name.includes("Document")||o.name.includes("Market")))modelFit=6;
-if(x.size==="Startup / Small Business"&&o.complexity>=8)sizeFit=-6;
-if(x.size==="Large Enterprise"&&o.name.includes("Workflow"))sizeFit=3;
+const challengeHits=countSignals(challengeText,o.themes);
+const dataHits=countSignals(dataText,o.data);
 
-const fundamentals=o.value*1.5+o.customer*.8+o.feasibility*1.2+o.speed*.8-o.complexity*.7-o.risk*.5;
-let score=Math.round(fundamentals+strategicFit+challengeHits*8+dataHits*4+modelFit+sizeFit);
+let strategicFit=o.area===objectiveArea[x.objective]?20:0;
+let modelFit=0;
+let sizeFit=0;
+
+if(
+x.model==="Marketplace / Platform"&&
+(o.name.includes("Search")||
+o.name.includes("Pricing")||
+o.name.includes("Personalized"))
+)modelFit=7;
+
+if(
+x.model==="B2B"&&
+(o.name.includes("Sales")||
+o.name.includes("Knowledge")||
+o.name.includes("Market"))
+)modelFit=6;
+
+if(
+x.model==="E-commerce"&&
+(o.name.includes("Personalized")||
+o.name.includes("Pricing")||
+o.name.includes("Support"))
+)modelFit=6;
+
+if(
+x.model==="Professional Services"&&
+(o.name.includes("Knowledge")||
+o.name.includes("Document")||
+o.name.includes("Market"))
+)modelFit=6;
+
+if(
+x.size==="Startup / Small Business"&&
+o.complexity>=8
+)sizeFit=-6;
+
+if(
+x.size==="Large Enterprise"&&
+o.name.includes("Workflow")
+)sizeFit=3;
+
+const fundamentals=
+o.value*1.5+
+o.customer*.8+
+o.feasibility*1.2+
+o.speed*.8-
+o.complexity*.7-
+o.risk*.5;
+
+let score=Math.round(
+fundamentals+
+strategicFit+
+challengeHits*8+
+dataHits*4+
+modelFit+
+sizeFit
+);
+
 score=Math.max(0,Math.min(100,score));
 
 let reason=[];
-if(strategicFit)reason.push("direct alignment with the primary business objective");
-if(challengeHits)reason.push("strong relevance to the challenges described");
-if(dataHits)reason.push("supporting data or digital assets appear to be available");
-if(modelFit)reason.push("good fit with the business model");
-if(!challengeHits)reason.push("limited direct evidence in the stated challenges");
 
-return{...o,score,challengeHits,dataHits,classification:classify(o),reason};
+if(strategicFit)
+reason.push("direct alignment with the primary business objective");
+
+if(challengeHits)
+reason.push("strong relevance to the challenges described");
+
+if(dataHits)
+reason.push("supporting data or digital assets appear to be available");
+
+if(modelFit)
+reason.push("good fit with the business model");
+
+if(!challengeHits)
+reason.push("limited direct evidence in the stated challenges");
+
+return{
+...o,
+score,
+challengeHits,
+dataHits,
+classification:classify(o),
+reason
+};
+
 });
 
 current.sort((a,b)=>b.score-a.score);
-originalRanks={};adjustments={};
-current.forEach((o,i)=>{originalRanks[o.name]=i+1;adjustments[o.name]=0});
+
+originalRanks={};
+adjustments={};
+
+current.forEach((o,i)=>{
+originalRanks[o.name]=i+1;
+adjustments[o.name]=0;
+});
+
 current=current.slice(0,7);
-renderSummary();render();
+
+renderSummary();
+render();
+
 results.style.display="block";
 results.scrollIntoView({behavior:"smooth"});
 }
 
 function renderSummary(){
-const x=getInputs();if(!current.length)return;
-let detected=[];current.forEach(o=>{if(o.challengeHits>0)detected.push(o.area)});detected=[...new Set(detected)];
-summary.innerHTML="<strong>"+esc(x.caseName||"Current AI Opportunity Assessment")+"</strong><br><br>"+
-"<strong>"+esc(x.company||"The organization")+"</strong> is assessed as a <strong>"+esc(x.size)+"</strong> "+esc(x.model)+
-" business in <strong>"+esc(x.industry||"the selected industry")+"</strong>. Its primary objective is to <strong>"+
-esc(x.objective.toLowerCase())+"</strong>.<br><br>The strongest contextual signals relate to <strong>"+
-esc(detected.length?detected.join(", "):"the selected strategic objective")+"</strong>."+
-'<div class="context-signals"><span class="signal">Context-driven ranking</span><span class="signal">Data readiness considered</span>'+
-'<span class="signal">Management override enabled</span><span class="signal">90-day execution roadmap</span></div>';
+
+const x=getInputs();
+
+if(!current.length)return;
+
+let detected=[];
+
+current.forEach(o=>{
+if(o.challengeHits>0)
+detected.push(o.area);
+});
+
+detected=[...new Set(detected)];
+
+summary.innerHTML=
+"<strong>"+esc(x.caseName||"Current AI Opportunity Assessment")+"</strong><br><br>"+
+"<strong>"+esc(x.company||"The organization")+"</strong> is assessed as a <strong>"+
+esc(x.size)+"</strong> "+esc(x.model)+
+" business in <strong>"+esc(x.industry||"the selected industry")+
+"</strong>. Its primary objective is to <strong>"+
+esc(x.objective.toLowerCase())+
+"</strong>.<br><br>The strongest contextual signals relate to <strong>"+
+esc(
+detected.length
+?detected.join(", ")
+:"the selected strategic objective"
+)+
+"</strong>."+
+'<div class="context-signals">'+
+'<span class="signal">Context-driven ranking</span>'+
+'<span class="signal">Data readiness considered</span>'+
+'<span class="signal">Management override enabled</span>'+
+'<span class="signal">90-day execution roadmap</span>'+
+'</div>';
+}
+
+/* V2.4 EXECUTIVE SNAPSHOT */
+
+function renderSnapshot(){
+
+const list=document.getElementById("snapshotList");
+const footer=document.getElementById("snapshotFooter");
+
+if(!list||!footer||!current.length)return;
+
+list.innerHTML="";
+
+current.slice(0,3).forEach((o,i)=>{
+
+const calibrated=Math.max(
+0,
+Math.min(
+100,
+o.score+(adjustments[o.name]||0)
+)
+);
+
+const item=document.createElement("div");
+item.className="snapshot-item";
+
+item.innerHTML=
+'<div class="snapshot-rank">#'+(i+1)+'</div>'+
+'<div>'+
+'<div class="snapshot-name">'+esc(o.name)+'</div>'+
+'<div class="snapshot-area">'+esc(o.area)+'</div>'+
+'</div>'+
+'<div class="snapshot-bottom">'+
+'<div class="snapshot-score">'+calibrated+'</div>'+
+'<div class="snapshot-class">'+esc(o.classification)+'</div>'+
+'</div>';
+
+list.appendChild(item);
+
+});
+
+const x=getInputs();
+
+let overrideCount=0;
+
+current.forEach((o,i)=>{
+
+if(
+originalRanks[o.name]!==i+1||
+(adjustments[o.name]||0)!==0
+){
+overrideCount++;
+}
+
+});
+
+footer.innerHTML=
+'<div class="snapshot-stat">'+
+'<span>Primary Objective</span>'+
+'<strong>'+esc(x.objective)+'</strong>'+
+'</div>'+
+'<div class="snapshot-stat">'+
+'<span>Management Overrides</span>'+
+'<strong>'+overrideCount+'</strong>'+
+'</div>'+
+'<div class="snapshot-stat">'+
+'<span>Execution</span>'+
+'<strong>90-Day Plan Ready</strong>'+
+'</div>';
+
 }
 
 function render(){
-opportunitiesEl=document.getElementById("opportunities");opportunitiesEl.innerHTML="";
+
+const opportunitiesEl=document.getElementById("opportunities");
+
+opportunitiesEl.innerHTML="";
+
 current.forEach((o,index)=>{
-const adj=adjustments[o.name]||0,calibrated=Math.max(0,Math.min(100,o.score+adj)),moved=originalRanks[o.name]!==index+1;
-const div=document.createElement("div");div.className="opportunity";
-div.innerHTML='<div class="opportunity-top"><div><div class="rank">Management rank #'+(index+1)+' · Model rank #'+originalRanks[o.name]+
-'</div><h3>'+esc(o.name)+'</h3><div class="area">'+esc(o.area)+'</div></div><div class="score">'+calibrated+
-'/100<small>calibrated score</small></div></div><div class="badges"><span class="badge">'+esc(o.classification)+'</span>'+
-(moved?'<span class="badge">Management reordered</span>':'')+(adj?'<span class="badge">'+(adj>0?'+':'')+adj+' management adjustment</span>':'')+
-'</div><div class="bar"><div class="fill" style="width:'+calibrated+'%"></div></div><div class="score-grid">'+
-'<div class="metric"><span>Business Value</span><strong>'+o.value+'/10</strong></div><div class="metric"><span>Customer Value</span><strong>'+o.customer+
-'/10</strong></div><div class="metric"><span>Feasibility</span><strong>'+o.feasibility+'/10</strong></div><div class="metric"><span>Time to Impact</span><strong>'+
-o.speed+'/10</strong></div><div class="metric"><span>Complexity</span><strong>'+o.complexity+'/10</strong></div><div class="metric"><span>Risk</span><strong>'+
-o.risk+'/10</strong></div></div><div class="reason"><strong>Why it ranked here:</strong> '+esc(o.reason.join("; "))+'.</div><div class="action"><strong>Recommended first step:</strong> '+
-esc(o.action)+'</div><div class="calibration"><div class="calibration-title">Management calibration</div><div class="controls">'+
-'<button class="control" onclick="moveItem('+index+',-1)">↑ Move up</button><button class="control" onclick="moveItem('+index+',1)">↓ Move down</button>'+
-'<button class="control boost" onclick="adjustScore('+index+',5)">More important +5</button><button class="control reduce" onclick="adjustScore('+index+',-5)">Less important −5</button>'+
-'<button class="control" onclick="resetItem('+index+')">Reset score</button></div><div class="override-note">Model score: '+o.score+'/100. Management adjustments remain visible.</div></div>';
+
+const adj=adjustments[o.name]||0;
+
+const calibrated=Math.max(
+0,
+Math.min(100,o.score+adj)
+);
+
+const moved=originalRanks[o.name]!==index+1;
+
+const div=document.createElement("div");
+
+div.className="opportunity";
+
+div.innerHTML=
+'<div class="opportunity-top">'+
+'<div>'+
+'<div class="rank">Management rank #'+(index+1)+
+' · Model rank #'+originalRanks[o.name]+
+'</div>'+
+'<h3>'+esc(o.name)+'</h3>'+
+'<div class="area">'+esc(o.area)+'</div>'+
+'</div>'+
+'<div class="score">'+calibrated+
+'/100<small>calibrated score</small></div>'+
+'</div>'+
+
+'<div class="badges">'+
+'<span class="badge">'+esc(o.classification)+'</span>'+
+(
+moved
+?'<span class="badge">Management reordered</span>'
+:''
+)+
+(
+adj
+?'<span class="badge">'+
+(adj>0?'+':'')+
+adj+
+' management adjustment</span>'
+:''
+)+
+'</div>'+
+
+'<div class="bar">'+
+'<div class="fill" style="width:'+calibrated+'%"></div>'+
+'</div>'+
+
+'<div class="score-grid">'+
+
+'<div class="metric">'+
+'<span>Business Value</span>'+
+'<strong>'+o.value+'/10</strong>'+
+'</div>'+
+
+'<div class="metric">'+
+'<span>Customer Value</span>'+
+'<strong>'+o.customer+'/10</strong>'+
+'</div>'+
+
+'<div class="metric">'+
+'<span>Feasibility</span>'+
+'<strong>'+o.feasibility+'/10</strong>'+
+'</div>'+
+
+'<div class="metric">'+
+'<span>Time to Impact</span>'+
+'<strong>'+o.speed+'/10</strong>'+
+'</div>'+
+
+'<div class="metric">'+
+'<span>Complexity</span>'+
+'<strong>'+o.complexity+'/10</strong>'+
+'</div>'+
+
+'<div class="metric">'+
+'<span>Risk</span>'+
+'<strong>'+o.risk+'/10</strong>'+
+'</div>'+
+
+'</div>'+
+
+'<div class="reason">'+
+'<strong>Why it ranked here:</strong> '+
+esc(o.reason.join("; "))+
+'.</div>'+
+
+'<div class="action">'+
+'<strong>Recommended first step:</strong> '+
+esc(o.action)+
+'</div>'+
+
+'<div class="calibration">'+
+
+'<div class="calibration-title">'+
+'Management calibration'+
+'</div>'+
+
+'<div class="controls">'+
+
+'<button class="control" onclick="moveItem('+
+index+
+',-1)">↑ Move up</button>'+
+
+'<button class="control" onclick="moveItem('+
+index+
+',1)">↓ Move down</button>'+
+
+'<button class="control boost" onclick="adjustScore('+
+index+
+',5)">More important +5</button>'+
+
+'<button class="control reduce" onclick="adjustScore('+
+index+
+',-5)">Less important −5</button>'+
+
+'<button class="control" onclick="resetItem('+
+index+
+')">Reset score</button>'+
+
+'</div>'+
+
+'<div class="override-note">'+
+'Model score: '+
+o.score+
+'/100. Management adjustments remain visible.'+
+'</div>'+
+
+'</div>';
+
 opportunitiesEl.appendChild(div);
+
 });
-renderPortfolio();renderRoadmap();
+
+renderSnapshot();
+renderPortfolio();
+renderRoadmap();
+
 }
 
-function moveItem(i,d){let t=i+d;if(t<0||t>=current.length)return;[current[i],current[t]]=[current[t],current[i]];render()}
-function adjustScore(i,a){let n=current[i].name;adjustments[n]=Math.max(-20,Math.min(20,(adjustments[n]||0)+a));render()}
-function resetItem(i){adjustments[current[i].name]=0;render()}
+function moveItem(i,d){
+
+let t=i+d;
+
+if(t<0||t>=current.length)return;
+
+[current[i],current[t]]=
+[current[t],current[i]];
+
+render();
+
+}
+
+function adjustScore(i,a){
+
+let n=current[i].name;
+
+adjustments[n]=Math.max(
+-20,
+Math.min(
+20,
+(adjustments[n]||0)+a
+)
+);
+
+render();
+
+}
+
+function resetItem(i){
+
+adjustments[current[i].name]=0;
+
+render();
+
+}
 
 function renderPortfolio(){
-let g={"Quick Win":[],"Strategic Bet":[],"Enabler":[],"Experiment":[]};
-current.forEach((o,i)=>g[o.classification].push({name:o.name,rank:i+1,score:Math.max(0,Math.min(100,o.score+(adjustments[o.name]||0)))}));
-fill("quick",g["Quick Win"]);fill("strategic",g["Strategic Bet"]);fill("enablers",g["Enabler"]);fill("experiments",g["Experiment"]);
+
+let g={
+"Quick Win":[],
+"Strategic Bet":[],
+"Enabler":[],
+"Experiment":[]
+};
+
+current.forEach((o,i)=>
+g[o.classification].push({
+name:o.name,
+rank:i+1,
+score:Math.max(
+0,
+Math.min(
+100,
+o.score+(adjustments[o.name]||0)
+)
+)
+})
+);
+
+fill("quick",g["Quick Win"]);
+fill("strategic",g["Strategic Bet"]);
+fill("enablers",g["Enabler"]);
+fill("experiments",g["Experiment"]);
+
 }
-function fill(id,a){let e=document.getElementById(id);e.innerHTML="";if(!a.length){e.innerHTML="<li>No current opportunities in this category.</li>";return}
-a.forEach(o=>{let li=document.createElement("li");li.textContent="#"+o.rank+" "+o.name+" — "+o.score+"/100";e.appendChild(li)})}
+
+function fill(id,a){
+
+let e=document.getElementById(id);
+
+e.innerHTML="";
+
+if(!a.length){
+
+e.innerHTML=
+"<li>No current opportunities in this category.</li>";
+
+return;
+
+}
+
+a.forEach(o=>{
+
+let li=document.createElement("li");
+
+li.textContent=
+"#"+o.rank+
+" "+o.name+
+" — "+o.score+
+"/100";
+
+e.appendChild(li);
+
+});
+
+}
 
 function getRoadmapData(o){
-let k=["Time saved","Adoption rate","Quality improvement","Business impact"];
-if(o.name.includes("Sales"))k=["Qualified opportunities","Sales research time","Lead-to-opportunity conversion","Pipeline generated"];
-else if(o.name.includes("Personalized Offers"))k=["Conversion rate","Average transaction value","Recommendation engagement","Incremental revenue"];
-else if(o.name.includes("Pricing"))k=["Revenue uplift","Margin impact","Conversion rate","Price acceptance"];
-else if(o.name.includes("Workflow"))k=["Hours saved","Process cycle time","Error rate","Cost per process"];
-else if(o.name.includes("Document"))k=["Processing time","Extraction accuracy","Manual interventions","Cost per document"];
-else if(o.name.includes("Knowledge"))k=["Employee time saved","Answer accuracy","Adoption rate","Successful query rate"];
-else if(o.name.includes("Search"))k=["Search-to-conversion rate","Zero-result rate","Engagement","Qualified leads / completed tasks"];
-else if(o.name.includes("Customer Journey"))k=["Journey completion","Conversion rate","Engagement","Customer satisfaction"];
-else if(o.name.includes("Support Agent"))k=["Containment rate","Resolution time","Cost per contact","Customer satisfaction"];
-else if(o.name.includes("Agent Copilot"))k=["Agent handling time","Response quality","First-contact resolution","Agent productivity"];
-else if(o.name.includes("Support Quality"))k=["Customer satisfaction","Negative sentiment rate","Quality score","Recurring issue detection"];
-else if(o.name.includes("Churn"))k=["Churn rate","Retention uplift","Prediction precision","Revenue retained"];
-else if(o.name.includes("Market & Competitive"))k=["Research time saved","Insight coverage","Decision cycle time","Management adoption"];
-else if(o.name.includes("Forecasting"))k=["Forecast accuracy","Planning cycle time","Inventory / capacity variance","Decision quality"];
-else if(o.name.includes("AI-Enabled Product"))k=["Customer adoption","Willingness to pay","Usage frequency","Incremental revenue"];
-else if(o.name.includes("AI Agent for Customer"))k=["Task completion rate","Customer adoption","Human intervention rate","Customer satisfaction"];
+
+let k=[
+"Time saved",
+"Adoption rate",
+"Quality improvement",
+"Business impact"
+];
+
+if(o.name.includes("Sales"))
+k=[
+"Qualified opportunities",
+"Sales research time",
+"Lead-to-opportunity conversion",
+"Pipeline generated"
+];
+
+else if(o.name.includes("Personalized Offers"))
+k=[
+"Conversion rate",
+"Average transaction value",
+"Recommendation engagement",
+"Incremental revenue"
+];
+
+else if(o.name.includes("Pricing"))
+k=[
+"Revenue uplift",
+"Margin impact",
+"Conversion rate",
+"Price acceptance"
+];
+
+else if(o.name.includes("Workflow"))
+k=[
+"Hours saved",
+"Process cycle time",
+"Error rate",
+"Cost per process"
+];
+
+else if(o.name.includes("Document"))
+k=[
+"Processing time",
+"Extraction accuracy",
+"Manual interventions",
+"Cost per document"
+];
+
+else if(o.name.includes("Knowledge"))
+k=[
+"Employee time saved",
+"Answer accuracy",
+"Adoption rate",
+"Successful query rate"
+];
+
+else if(o.name.includes("Search"))
+k=[
+"Search-to-conversion rate",
+"Zero-result rate",
+"Engagement",
+"Qualified leads / completed tasks"
+];
+
+else if(o.name.includes("Customer Journey"))
+k=[
+"Journey completion",
+"Conversion rate",
+"Engagement",
+"Customer satisfaction"
+];
+
+else if(o.name.includes("Support Agent"))
+k=[
+"Containment rate",
+"Resolution time",
+"Cost per contact",
+"Customer satisfaction"
+];
+
+else if(o.name.includes("Agent Copilot"))
+k=[
+"Agent handling time",
+"Response quality",
+"First-contact resolution",
+"Agent productivity"
+];
+
+else if(o.name.includes("Support Quality"))
+k=[
+"Customer satisfaction",
+"Negative sentiment rate",
+"Quality score",
+"Recurring issue detection"
+];
+
+else if(o.name.includes("Churn"))
+k=[
+"Churn rate",
+"Retention uplift",
+"Prediction precision",
+"Revenue retained"
+];
+
+else if(o.name.includes("Market & Competitive"))
+k=[
+"Research time saved",
+"Insight coverage",
+"Decision cycle time",
+"Management adoption"
+];
+
+else if(o.name.includes("Forecasting"))
+k=[
+"Forecast accuracy",
+"Planning cycle time",
+"Inventory / capacity variance",
+"Decision quality"
+];
+
+else if(o.name.includes("AI-Enabled Product"))
+k=[
+"Customer adoption",
+"Willingness to pay",
+"Usage frequency",
+"Incremental revenue"
+];
+
+else if(o.name.includes("AI Agent for Customer"))
+k=[
+"Task completion rate",
+"Customer adoption",
+"Human intervention rate",
+"Customer satisfaction"
+];
 
 return{
-validate:"Define the business hypothesis and baseline. Confirm target users or process, available data, stakeholders, risks and success criteria. Validate that the opportunity solves a sufficiently important problem before investing in implementation.",
-pilot:"Build a deliberately limited pilot around one use case, team, customer segment or workflow. Establish human oversight and compare performance against the current process using agreed KPIs.",
-decide:"Measure results against the baseline. Review business impact, user adoption, quality, risk and operational implications. Make an explicit Scale, Iterate or Stop decision and define the next investment required.",
-kpis:k};
+
+validate:
+"Define the business hypothesis and baseline. Confirm target users or process, available data, stakeholders, risks and success criteria. Validate that the opportunity solves a sufficiently important problem before investing in implementation.",
+
+pilot:
+"Build a deliberately limited pilot around one use case, team, customer segment or workflow. Establish human oversight and compare performance against the current process using agreed KPIs.",
+
+decide:
+"Measure results against the baseline. Review business impact, user adoption, quality, risk and operational implications. Make an explicit Scale, Iterate or Stop decision and define the next investment required.",
+
+kpis:k
+
+};
+
 }
 
 function renderRoadmap(){
+
 roadmap.innerHTML="";
+
 current.slice(0,3).forEach((o,i)=>{
-let r=getRoadmapData(o),s=Math.max(0,Math.min(100,o.score+(adjustments[o.name]||0))),d=document.createElement("div");d.className="roadmap-opportunity";
-d.innerHTML='<div class="roadmap-header"><div><div class="roadmap-rank">Management Priority #'+(i+1)+'</div><h3>'+esc(o.name)+'</h3><div class="area">'+
-esc(o.area)+' · '+s+'/100 calibrated score</div></div><span class="badge">'+esc(o.classification)+'</span></div><div class="roadmap-phases">'+
-'<div class="phase"><div class="phase-title">Days 1–30</div><strong>Validate</strong><p>'+esc(r.validate)+'</p></div>'+
-'<div class="phase"><div class="phase-title">Days 31–60</div><strong>Pilot</strong><p>'+esc(r.pilot)+'</p></div>'+
-'<div class="phase"><div class="phase-title">Days 61–90</div><strong>Measure & Decide</strong><p>'+esc(r.decide)+'</p></div></div>'+
-'<div class="kpi-box"><strong>Suggested KPIs:</strong> '+esc(r.kpis.join(" · "))+'</div>';roadmap.appendChild(d);
+
+let r=getRoadmapData(o);
+
+let s=Math.max(
+0,
+Math.min(
+100,
+o.score+(adjustments[o.name]||0)
+)
+);
+
+let d=document.createElement("div");
+
+d.className="roadmap-opportunity";
+
+d.innerHTML=
+'<div class="roadmap-header">'+
+'<div>'+
+'<div class="roadmap-rank">'+
+'Management Priority #'+
+(i+1)+
+'</div>'+
+'<h3>'+esc(o.name)+'</h3>'+
+'<div class="area">'+
+esc(o.area)+
+' · '+
+s+
+'/100 calibrated score'+
+'</div>'+
+'</div>'+
+'<span class="badge">'+
+esc(o.classification)+
+'</span>'+
+'</div>'+
+
+'<div class="roadmap-phases">'+
+
+'<div class="phase">'+
+'<div class="phase-title">Days 1–30</div>'+
+'<strong>Validate</strong>'+
+'<p>'+esc(r.validate)+'</p>'+
+'</div>'+
+
+'<div class="phase">'+
+'<div class="phase-title">Days 31–60</div>'+
+'<strong>Pilot</strong>'+
+'<p>'+esc(r.pilot)+'</p>'+
+'</div>'+
+
+'<div class="phase">'+
+'<div class="phase-title">Days 61–90</div>'+
+'<strong>Measure & Decide</strong>'+
+'<p>'+esc(r.decide)+'</p>'+
+'</div>'+
+
+'</div>'+
+
+'<div class="kpi-box">'+
+'<strong>Suggested KPIs:</strong> '+
+esc(r.kpis.join(" · "))+
+'</div>';
+
+roadmap.appendChild(d);
+
 });
+
 }
 
-function getCases(){try{return JSON.parse(localStorage.getItem("aiOpportunityCases")||"[]")}catch(e){return[]}}
-function storeCases(c){localStorage.setItem("aiOpportunityCases",JSON.stringify(c))}
+function getCases(){
+
+try{
+
+return JSON.parse(
+localStorage.getItem(
+"aiOpportunityCases"
+)||"[]"
+);
+
+}
+catch(e){
+
+return[];
+
+}
+
+}
+
+function storeCases(c){
+
+localStorage.setItem(
+"aiOpportunityCases",
+JSON.stringify(c)
+);
+
+}
 
 function saveCase(){
-let x=getInputs();if(!x.caseName){alert("Please give this case a Case Name before saving.");caseName.focus();return}
-if(!current.length){alert("Please analyze the case before saving it.");return}
-let now=new Date().toISOString();if(!currentCaseId)currentCaseId="case_"+Date.now();if(!currentCreated)currentCreated=now;
-let record={id:currentCaseId,created:currentCreated,updated:now,inputs:x,current,originalRanks,adjustments};
-let c=getCases(),i=c.findIndex(v=>v.id===currentCaseId);if(i>=0)c[i]=record;else c.unshift(record);
-storeCases(c);caseStatus.textContent="Saved · "+new Date(now).toLocaleString();renderSavedCases();
+
+let x=getInputs();
+
+if(!x.caseName){
+
+alert(
+"Please give this case a Case Name before saving."
+);
+
+caseName.focus();
+
+return;
+
+}
+
+if(!current.length){
+
+alert(
+"Please analyze the case before saving it."
+);
+
+return;
+
+}
+
+let now=new Date().toISOString();
+
+if(!currentCaseId)
+currentCaseId="case_"+Date.now();
+
+if(!currentCreated)
+currentCreated=now;
+
+let record={
+id:currentCaseId,
+created:currentCreated,
+updated:now,
+inputs:x,
+current,
+originalRanks,
+adjustments
+};
+
+let c=getCases();
+
+let i=c.findIndex(
+v=>v.id===currentCaseId
+);
+
+if(i>=0)
+c[i]=record;
+else
+c.unshift(record);
+
+storeCases(c);
+
+caseStatus.textContent=
+"Saved · "+
+new Date(now).toLocaleString();
+
+renderSavedCases();
+
 }
 
 function loadCase(id){
-let r=getCases().find(c=>c.id===id);if(!r)return;currentCaseId=r.id;currentCreated=r.created;setInputs(r.inputs);
-current=r.current||[];originalRanks=r.originalRanks||{};adjustments=r.adjustments||{};
-renderSummary();render();results.style.display=current.length?"block":"none";
-caseStatus.textContent="Loaded · last updated "+new Date(r.updated).toLocaleString();window.scrollTo({top:0,behavior:"smooth"});
+
+let r=getCases().find(
+c=>c.id===id
+);
+
+if(!r)return;
+
+currentCaseId=r.id;
+currentCreated=r.created;
+
+setInputs(r.inputs);
+
+current=r.current||[];
+originalRanks=r.originalRanks||{};
+adjustments=r.adjustments||{};
+
+renderSummary();
+render();
+
+results.style.display=
+current.length
+?"block"
+:"none";
+
+caseStatus.textContent=
+"Loaded · last updated "+
+new Date(
+r.updated
+).toLocaleString();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
 }
 
 function duplicateCase(id){
-let s=getCases().find(c=>c.id===id);if(!s)return;let c=JSON.parse(JSON.stringify(s));
-c.id="case_"+Date.now();c.created=new Date().toISOString();c.updated=c.created;c.inputs.caseName=(c.inputs.caseName||"Case")+" — Copy";
-let all=getCases();all.unshift(c);storeCases(all);renderSavedCases();loadCase(c.id);
+
+let s=getCases().find(
+c=>c.id===id
+);
+
+if(!s)return;
+
+let c=JSON.parse(
+JSON.stringify(s)
+);
+
+c.id="case_"+Date.now();
+c.created=new Date().toISOString();
+c.updated=c.created;
+
+c.inputs.caseName=
+(c.inputs.caseName||"Case")+
+" — Copy";
+
+let all=getCases();
+
+all.unshift(c);
+
+storeCases(all);
+
+renderSavedCases();
+
+loadCase(c.id);
+
 }
 
 function deleteCase(id){
-if(!confirm("Delete this saved case? This cannot be undone."))return;
-storeCases(getCases().filter(c=>c.id!==id));if(currentCaseId===id)newCase();renderSavedCases();
+
+if(
+!confirm(
+"Delete this saved case? This cannot be undone."
+)
+)return;
+
+storeCases(
+getCases().filter(
+c=>c.id!==id
+)
+);
+
+if(currentCaseId===id)
+newCase();
+
+renderSavedCases();
+
 }
 
 function newCase(){
-currentCaseId=null;currentCreated=null;current=[];originalRanks={};adjustments={};setInputs({});
-results.style.display="none";caseStatus.textContent="Unsaved case";window.scrollTo({top:0,behavior:"smooth"});
+
+currentCaseId=null;
+currentCreated=null;
+
+current=[];
+originalRanks={};
+adjustments={};
+
+setInputs({});
+
+results.style.display="none";
+
+caseStatus.textContent=
+"Unsaved case";
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
 }
 
 function renderSavedCases(){
-let c=getCases(),e=savedCases;e.innerHTML="";if(!c.length){e.innerHTML='<p class="empty">No saved cases yet.</p>';return}
-c.sort((a,b)=>new Date(b.updated)-new Date(a.updated));
-c.forEach(v=>{let d=document.createElement("div");d.className="saved-case";
-d.innerHTML="<h3>"+esc(v.inputs.caseName||"Untitled Case")+"</h3><div class='saved-meta'>"+esc(v.inputs.company||"No company")+" · "+
-esc(v.inputs.industry||"No industry")+"<br>Objective: "+esc(v.inputs.objective||"")+"<br>Updated: "+new Date(v.updated).toLocaleString()+
-"</div><div class='saved-actions'><button class='secondary' onclick=\"loadCase('"+v.id+"')\">Open / Edit</button>"+
-"<button class='secondary' onclick=\"duplicateCase('"+v.id+"')\">Duplicate</button><button class='danger' onclick=\"deleteCase('"+v.id+"')\">Delete</button></div>";e.appendChild(d)});
+
+let c=getCases();
+
+let e=savedCases;
+
+e.innerHTML="";
+
+if(!c.length){
+
+e.innerHTML=
+'<p class="empty">'+
+'No saved cases yet.'+
+'</p>';
+
+return;
+
+}
+
+c.sort(
+(a,b)=>
+new Date(b.updated)-
+new Date(a.updated)
+);
+
+c.forEach(v=>{
+
+let d=document.createElement("div");
+
+d.className="saved-case";
+
+d.innerHTML=
+"<h3>"+
+esc(
+v.inputs.caseName||
+"Untitled Case"
+)+
+"</h3>"+
+
+"<div class='saved-meta'>"+
+esc(
+v.inputs.company||
+"No company"
+)+
+" · "+
+esc(
+v.inputs.industry||
+"No industry"
+)+
+"<br>Objective: "+
+esc(
+v.inputs.objective||
+""
+)+
+"<br>Updated: "+
+new Date(
+v.updated
+).toLocaleString()+
+"</div>"+
+
+"<div class='saved-actions'>"+
+
+"<button class='secondary' onclick=\"loadCase('"+
+v.id+
+"')\">Open / Edit</button>"+
+
+"<button class='secondary' onclick=\"duplicateCase('"+
+v.id+
+"')\">Duplicate</button>"+
+
+"<button class='danger' onclick=\"deleteCase('"+
+v.id+
+"')\">Delete</button>"+
+
+"</div>";
+
+e.appendChild(d);
+
+});
+
 }
 
 function exportRows(){
+
 let x=getInputs();
+
 return current.map((o,i)=>{
-let r=getRoadmapData(o),top=i<3;
+
+let r=getRoadmapData(o);
+
+let top=i<3;
+
 return{
-caseName:x.caseName,company:x.company,industry:x.industry,businessModel:x.model,companySize:x.size,objective:x.objective,
-managementRank:i+1,modelRank:originalRanks[o.name],opportunity:o.name,area:o.area,classification:o.classification,
-modelScore:o.score,managementAdjustment:adjustments[o.name]||0,
-calibratedScore:Math.max(0,Math.min(100,o.score+(adjustments[o.name]||0))),
-businessValue:o.value,customerValue:o.customer,feasibility:o.feasibility,timeToImpact:o.speed,complexity:o.complexity,risk:o.risk,
-rationale:o.reason.join("; "),recommendedFirstStep:o.action,
-roadmapPriority:top?"Top 3":"",days1to30:top?r.validate:"",days31to60:top?r.pilot:"",days61to90:top?r.decide:"",suggestedKPIs:top?r.kpis.join(" | "):""
+
+caseName:x.caseName,
+company:x.company,
+industry:x.industry,
+businessModel:x.model,
+companySize:x.size,
+objective:x.objective,
+
+managementRank:i+1,
+modelRank:originalRanks[o.name],
+
+opportunity:o.name,
+area:o.area,
+classification:o.classification,
+
+modelScore:o.score,
+
+managementAdjustment:
+adjustments[o.name]||0,
+
+calibratedScore:
+Math.max(
+0,
+Math.min(
+100,
+o.score+
+(adjustments[o.name]||0)
+)
+),
+
+businessValue:o.value,
+customerValue:o.customer,
+feasibility:o.feasibility,
+timeToImpact:o.speed,
+complexity:o.complexity,
+risk:o.risk,
+
+rationale:
+o.reason.join("; "),
+
+recommendedFirstStep:
+o.action,
+
+roadmapPriority:
+top
+?"Top 3"
+:"",
+
+days1to30:
+top
+?r.validate
+:"",
+
+days31to60:
+top
+?r.pilot
+:"",
+
+days61to90:
+top
+?r.decide
+:"",
+
+suggestedKPIs:
+top
+?r.kpis.join(" | ")
+:""
+
 };
+
 });
+
 }
 
-function downloadFile(n,c,t){let b=new Blob([c],{type:t}),u=URL.createObjectURL(b),a=document.createElement("a");a.href=u;a.download=n;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(u)}
-function safeFilename(){return(caseName.value.trim()||"ai-opportunity-case").replace(/[^a-z0-9-_]+/gi,"_")}
+function downloadFile(n,c,t){
+
+let b=new Blob(
+[c],
+{type:t}
+);
+
+let u=URL.createObjectURL(b);
+
+let a=document.createElement("a");
+
+a.href=u;
+a.download=n;
+
+document.body.appendChild(a);
+
+a.click();
+
+a.remove();
+
+URL.revokeObjectURL(u);
+
+}
+
+function safeFilename(){
+
+return(
+caseName.value.trim()||
+"ai-opportunity-case"
+).replace(
+/[^a-z0-9-_]+/gi,
+"_"
+);
+
+}
 
 function exportCSV(){
-if(!current.length){alert("Analyze or open a case first.");return}
-let rows=exportRows(),h=Object.keys(rows[0]),csv=[h.join(","),...rows.map(r=>h.map(k=>'"'+String(r[k]??"").replaceAll('"','""')+'"').join(","))].join("\n");
-downloadFile(safeFilename()+".csv",csv,"text/csv;charset=utf-8");
+
+if(!current.length){
+
+alert(
+"Analyze or open a case first."
+);
+
+return;
+
+}
+
+let rows=exportRows();
+
+let h=Object.keys(
+rows[0]
+);
+
+let csv=[
+h.join(","),
+
+...rows.map(
+r=>
+h.map(
+k=>
+'"'+
+String(
+r[k]??""
+).replaceAll(
+'"',
+'""'
+)+
+'"'
+).join(",")
+)
+
+].join("\n");
+
+downloadFile(
+safeFilename()+".csv",
+csv,
+"text/csv;charset=utf-8"
+);
+
 }
 
 function exportTXT(){
-if(!current.length){alert("Analyze or open a case first.");return}
-let x=getInputs(),text="AI BUSINESS OPPORTUNITY ASSESSMENT\n==================================\n\nCase: "+x.caseName+"\nCompany: "+x.company+
-"\nIndustry: "+x.industry+"\nBusiness Model: "+x.model+"\nCompany Size: "+x.size+"\nPrimary Objective: "+x.objective+
-"\n\nKEY BUSINESS CHALLENGES\n"+x.challenges+"\n\nCUSTOMERS\n"+x.customers+"\n\nAVAILABLE DATA & DIGITAL ASSETS\n"+x.data+
-"\n\nPRIORITIZED OPPORTUNITIES\n-------------------------\n\n";
+
+if(!current.length){
+
+alert(
+"Analyze or open a case first."
+);
+
+return;
+
+}
+
+let x=getInputs();
+
+let text=
+"AI BUSINESS OPPORTUNITY ASSESSMENT\n"+
+"==================================\n\n"+
+
+"Case: "+
+x.caseName+
+
+"\nCompany: "+
+x.company+
+
+"\nIndustry: "+
+x.industry+
+
+"\nBusiness Model: "+
+x.model+
+
+"\nCompany Size: "+
+x.size+
+
+"\nPrimary Objective: "+
+x.objective+
+
+"\n\nKEY BUSINESS CHALLENGES\n"+
+x.challenges+
+
+"\n\nCUSTOMERS\n"+
+x.customers+
+
+"\n\nAVAILABLE DATA & DIGITAL ASSETS\n"+
+x.data+
+
+"\n\nPRIORITIZED OPPORTUNITIES\n"+
+"-------------------------\n\n";
 
 current.forEach((o,i)=>{
-let s=Math.max(0,Math.min(100,o.score+(adjustments[o.name]||0)));
-text+="#"+(i+1)+" "+o.name+"\nArea: "+o.area+"\nClassification: "+o.classification+"\nModel Rank: #"+originalRanks[o.name]+
-"\nManagement Rank: #"+(i+1)+"\nModel Score: "+o.score+"/100\nManagement Adjustment: "+(adjustments[o.name]||0)+
-"\nCalibrated Score: "+s+"/100\nWhy it ranked here: "+o.reason.join("; ")+"\nRecommended First Step: "+o.action+"\n\n";
+
+let s=Math.max(
+0,
+Math.min(
+100,
+o.score+
+(adjustments[o.name]||0)
+)
+);
+
+text+=
+"#"+(i+1)+
+" "+o.name+
+
+"\nArea: "+
+o.area+
+
+"\nClassification: "+
+o.classification+
+
+"\nModel Rank: #"+
+originalRanks[o.name]+
+
+"\nManagement Rank: #"+
+(i+1)+
+
+"\nModel Score: "+
+o.score+
+"/100"+
+
+"\nManagement Adjustment: "+
+(adjustments[o.name]||0)+
+
+"\nCalibrated Score: "+
+s+
+"/100"+
+
+"\nWhy it ranked here: "+
+o.reason.join("; ")+
+
+"\nRecommended First Step: "+
+o.action+
+
+"\n\n";
+
 });
 
-text+="\n90-DAY AI ACTION PLAN\n=====================\n\n";
+text+=
+"\n90-DAY AI ACTION PLAN\n"+
+"=====================\n\n";
+
 current.slice(0,3).forEach((o,i)=>{
+
 let r=getRoadmapData(o);
-text+="PRIORITY #"+(i+1)+" — "+o.name+"\n\nDAYS 1–30 — VALIDATE\n"+r.validate+"\n\nDAYS 31–60 — PILOT\n"+r.pilot+
-"\n\nDAYS 61–90 — MEASURE & DECIDE\n"+r.decide+"\n\nSUGGESTED KPIs\n"+r.kpis.join(" | ")+"\n\n";
+
+text+=
+"PRIORITY #"+
+(i+1)+
+" — "+
+o.name+
+
+"\n\nDAYS 1–30 — VALIDATE\n"+
+r.validate+
+
+"\n\nDAYS 31–60 — PILOT\n"+
+r.pilot+
+
+"\n\nDAYS 61–90 — MEASURE & DECIDE\n"+
+r.decide+
+
+"\n\nSUGGESTED KPIs\n"+
+r.kpis.join(" | ")+
+
+"\n\n";
+
 });
-downloadFile(safeFilename()+".txt",text,"text/plain;charset=utf-8");
+
+downloadFile(
+safeFilename()+".txt",
+text,
+"text/plain;charset=utf-8"
+);
+
 }
 
 renderSavedCases();
+
 </script>
+
 </body>
 </html>
