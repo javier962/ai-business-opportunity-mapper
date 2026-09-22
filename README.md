@@ -8,7 +8,27 @@ A practical decision-support application for identifying, evaluating and priorit
 https://javier962.github.io/ai-business-opportunity-mapper/
 
 ---
+## Product Preview
 
+### 1. Executive AI Opportunity Snapshot
+
+A concise management view of the highest-priority AI opportunities — turning business context into an immediately understandable strategic shortlist.
+
+![AI Business Opportunity Mapper — Executive Snapshot](assets/IMG_8875.jpeg)
+
+### 2. Management Calibration
+
+The model provides the initial recommendation, but management retains control. Original model rankings remain visible while executives can reorder priorities and adjust strategic importance.
+
+![AI Business Opportunity Mapper — Management Calibration](assets/IMG_8879.jpeg)
+
+### 3. From Opportunity to Execution
+
+The management-calibrated Top 3 are automatically translated into practical 90-day action plans — moving from validation, to pilot, to an evidence-based Scale, Iterate or Stop decision.
+
+![AI Business Opportunity Mapper — 90-Day Action Plan](assets/IMG_8877.jpeg)
+
+> **The model informs the decision. Management owns the decision.**
 ## Why I Built This
 
 AI strategy conversations often start with technology:
