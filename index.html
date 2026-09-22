@@ -8,26 +8,30 @@
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f3f6fa;color:#172033}
-header{background:linear-gradient(135deg,#0f172a,#1e293b);color:white;padding:58px 20px;text-align:center}
+header{background:linear-gradient(135deg,#0f172a,#1e293b);color:white;padding:55px 20px;text-align:center}
 header h1{margin:0 0 12px;font-size:40px}
-header p{max-width:800px;margin:auto;line-height:1.6;color:#cbd5e1}
+header p{max-width:820px;margin:auto;line-height:1.6;color:#cbd5e1}
 .version{display:inline-block;margin-top:18px;padding:6px 12px;background:#334155;border-radius:20px;font-size:12px}
-.container{max-width:1100px;margin:35px auto;padding:0 20px}
+.container{max-width:1100px;margin:30px auto;padding:0 20px}
 .card{background:white;border-radius:16px;padding:30px;margin-bottom:25px;box-shadow:0 5px 22px rgba(0,0,0,.06)}
 h2{margin-top:0}
 .subtitle{color:#64748b;line-height:1.6}
 label{display:block;font-weight:700;margin:18px 0 7px}
 input,select,textarea{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;font-size:15px;background:white}
-textarea{min-height:105px;resize:vertical}
+textarea{min-height:100px;resize:vertical}
 button{border:none;border-radius:8px;font-weight:bold;cursor:pointer}
-.primary{margin-top:25px;background:#2563eb;color:white;padding:14px 24px;font-size:16px}
-.primary:hover{background:#1d4ed8}
+.primary{background:#2563eb;color:white;padding:13px 20px;font-size:15px}
+.secondary{background:#e2e8f0;color:#334155;padding:11px 16px}
+.success{background:#059669;color:white;padding:11px 16px}
+.danger{background:#fff1f2;color:#be123c;padding:8px 11px}
+.toolbar{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.case-status{font-size:13px;color:#64748b;margin-top:8px}
 #results{display:none}
 .summary{background:#eff6ff;border-left:5px solid #2563eb;padding:20px;border-radius:8px;line-height:1.65}
 .context-signals{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
 .signal{background:#e0e7ff;padding:6px 10px;border-radius:18px;font-size:12px;font-weight:bold}
-.opportunity{border:1px solid #e2e8f0;border-radius:14px;padding:24px;margin:18px 0;background:white}
-.opportunity-top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+.opportunity{border:1px solid #e2e8f0;border-radius:14px;padding:24px;margin:18px 0}
+.opportunity-top{display:flex;justify-content:space-between;gap:20px}
 .rank{font-size:12px;font-weight:bold;color:#64748b;text-transform:uppercase}
 .opportunity h3{margin:6px 0;font-size:21px}
 .area{font-size:14px;color:#64748b}
@@ -47,7 +51,6 @@ button{border:none;border-radius:8px;font-weight:bold;cursor:pointer}
 .calibration-title{font-size:13px;font-weight:bold;margin-bottom:10px}
 .controls{display:flex;flex-wrap:wrap;gap:8px}
 .control{padding:8px 11px;background:#f1f5f9;color:#334155;font-size:13px}
-.control:hover{background:#e2e8f0}
 .boost{background:#ecfdf5;color:#047857}
 .reduce{background:#fff1f2;color:#be123c}
 .override-note{font-size:12px;color:#64748b;margin-top:10px}
@@ -57,6 +60,12 @@ button{border:none;border-radius:8px;font-weight:bold;cursor:pointer}
 .matrix-box li{margin-bottom:8px}
 .legend{background:#f8fafc;padding:18px;border-radius:10px;line-height:1.6;color:#475569}
 .method{font-size:14px;color:#64748b;line-height:1.65}
+.saved-case{border:1px solid #e2e8f0;border-radius:12px;padding:17px;margin:12px 0}
+.saved-case h3{margin:0 0 6px}
+.saved-meta{font-size:13px;color:#64748b;line-height:1.5}
+.saved-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.saved-actions button{padding:8px 11px}
+.empty{color:#64748b;font-style:italic}
 footer{text-align:center;padding:35px;color:#64748b;font-size:13px}
 
 @media(max-width:700px){
@@ -66,6 +75,15 @@ header h1{font-size:30px}
 .matrix{grid-template-columns:1fr}
 .opportunity-top{display:block}
 .score{text-align:left;margin-top:10px}
+}
+
+@media print{
+header,.input-card,.toolbar,.calibration,.saved-card,footer{display:none!important}
+body{background:white}
+.container{max-width:none;margin:0;padding:0}
+.card{box-shadow:none}
+#results{display:block!important}
+.opportunity{break-inside:avoid}
 }
 </style>
 </head>
@@ -79,17 +97,20 @@ Turn business challenges, objectives and available data into a prioritized
 portfolio of practical AI opportunities — then calibrate the recommendations
 with management judgment.
 </p>
-<div class="version">V2.1 · Strategy + Management Calibration</div>
+<div class="version">V2.2 · Case Management + Export</div>
 </header>
 
 <div class="container">
 
-<div class="card">
-<h2>1. Business Context</h2>
+<div class="card input-card">
+
+<h2>1. Business Case</h2>
 <p class="subtitle">
-Describe the organization and its real challenges. Specific information produces
-a more differentiated opportunity assessment.
+Create, analyze, save and revisit AI opportunity assessments.
 </p>
+
+<label>Case Name</label>
+<input id="caseName" placeholder="Example: Acme AI Strategy — Customer Experience">
 
 <label>Company / Project Name</label>
 <input id="company" placeholder="Example: Acme Marketplace">
@@ -126,15 +147,35 @@ a more differentiated opportunity assessment.
 </select>
 
 <label>Key Business Challenges</label>
-<textarea id="challenges" placeholder="Example: Customer support receives thousands of repetitive emails. Sales teams spend too much time researching prospects. Advertiser retention is declining and customers struggle to find relevant listings."></textarea>
+<textarea id="challenges" placeholder="Describe the most important business problems or opportunities."></textarea>
 
 <label>Customer Type</label>
-<input id="customers" placeholder="Example: consumers, SMEs, enterprise clients, property buyers">
+<input id="customers" placeholder="Example: consumers, SMEs, enterprise clients">
 
 <label>Available Data & Digital Assets</label>
-<textarea id="data" placeholder="Example: CRM records, customer emails, support tickets, website behaviour, transactions, listings, product catalogue, pricing history, call recordings, internal documents"></textarea>
+<textarea id="data" placeholder="Example: CRM, support tickets, transactions, listings, clickstream, pricing history, documents"></textarea>
 
+<div class="toolbar">
 <button class="primary" onclick="generateMap()">Analyze AI Opportunities</button>
+<button class="success" onclick="saveCase()">Save Case</button>
+<button class="secondary" onclick="newCase()">New Case</button>
+</div>
+
+<div id="caseStatus" class="case-status">Unsaved case</div>
+
+</div>
+
+
+<div class="card saved-card">
+
+<h2>My Saved Cases</h2>
+<p class="subtitle">
+Cases are stored locally in this browser. They do not automatically synchronize
+between devices and can be lost if browser storage is cleared.
+</p>
+
+<div id="savedCases"></div>
+
 </div>
 
 
@@ -143,15 +184,23 @@ a more differentiated opportunity assessment.
 <h2>2. Executive Assessment</h2>
 <div id="summary" class="summary"></div>
 
-<h2 style="margin-top:38px">3. Model-Prioritized Opportunities</h2>
+<div class="toolbar">
+<button class="success" onclick="saveCase()">Save Current Case</button>
+<button class="secondary" onclick="window.print()">Print / Save PDF</button>
+<button class="secondary" onclick="exportCSV()">Export CSV</button>
+<button class="secondary" onclick="exportTXT()">Export TXT</button>
+</div>
+
+<h2 style="margin-top:38px">3. Prioritized AI Opportunities</h2>
 <p class="subtitle">
-The first ranking is generated by the framework. Management can then challenge
-the result without losing visibility of the original model ranking.
+The framework generates the initial ranking. Management can then reorder or
+adjust priorities while preserving the original model assessment.
 </p>
 
 <div id="opportunities"></div>
 
 <h2 style="margin-top:40px">4. Management-Calibrated Portfolio</h2>
+
 <div class="matrix">
 <div class="matrix-box"><h3>⚡ Quick Wins</h3><ul id="quick"></ul></div>
 <div class="matrix-box"><h3>🎯 Strategic Bets</h3><ul id="strategic"></ul></div>
@@ -160,12 +209,12 @@ the result without losing visibility of the original model ranking.
 </div>
 
 <h2 style="margin-top:40px">5. How to Read the Result</h2>
+
 <div class="legend">
-<strong>Model Rank</strong> is the framework's original assessment.
+<strong>Model Rank</strong> is the framework's original recommendation.
 <strong>Management Rank</strong> reflects subsequent human judgment.
-Moving an opportunity does not rewrite the model's original score.
-This creates a visible distinction between analytical prioritization and
-executive judgment.
+Management adjustments remain visible instead of rewriting the model's
+original assessment.
 </div>
 
 <p class="method">
@@ -176,9 +225,9 @@ not forecasts of ROI.
 </p>
 
 <p class="method">
-<strong>V2.1 deliberately uses a transparent rules-based model.</strong>
-A future AI-powered version can generate company-specific opportunities and
-reasoning while retaining this structured prioritization framework.
+<strong>V2.2 uses a transparent rules-based strategy model.</strong>
+Future versions can combine this framework with generative AI while retaining
+structured scoring and management oversight.
 </p>
 
 </div>
@@ -186,137 +235,26 @@ reasoning while retaining this structured prioritization framework.
 
 <footer>AI Business Opportunity Mapper · Javier Ortiz Sanz</footer>
 
+
 <script>
 
-const opportunities = [
-{
-name:"AI Sales Research & Lead Intelligence",
-area:"Revenue Growth",
-themes:["sales","prospect","lead","acquisition","pipeline","business development","research"],
-data:["crm","customer","sales","lead","website"],
-value:9,customer:6,feasibility:8,speed:8,complexity:4,risk:3,
-action:"Pilot with one sales team. Measure research time, qualified opportunities and conversion against the existing process."
-},
-{
-name:"Personalized Offers & Recommendations",
-area:"Revenue Growth",
-themes:["personalization","conversion","upsell","cross sell","recommendation","relevance","engagement"],
-data:["transaction","behaviour","behavior","customer","purchase","crm"],
-value:9,customer:9,feasibility:7,speed:6,complexity:6,risk:4,
-action:"Select one high-volume customer journey and test whether behavioural or transactional data can improve relevance and conversion."
-},
-{
-name:"Pricing & Monetization Optimization",
-area:"Revenue Growth",
-themes:["pricing","price","margin","monetization","revenue","yield","conversion"],
-data:["pricing","transaction","sales","conversion","purchase"],
-value:10,customer:6,feasibility:6,speed:6,complexity:7,risk:5,
-action:"Establish a baseline for price, conversion and margin in one segment before testing AI-assisted optimization."
-},
-{
-name:"Workflow Automation",
-area:"Operational Efficiency",
-themes:["manual","repetitive","administrative","workflow","slow","processing","back office","hours","time consuming"],
-data:["documents","email","workflow","process","system"],
-value:8,customer:5,feasibility:9,speed:9,complexity:3,risk:3,
-action:"Map one high-volume repetitive process, quantify current labour time and automate the lowest-risk steps first."
-},
-{
-name:"Document Processing & Extraction",
-area:"Operational Efficiency",
-themes:["document","invoice","contract","forms","paperwork","data entry","processing"],
-data:["document","pdf","invoice","contract","forms"],
-value:7,customer:5,feasibility:9,speed:8,complexity:4,risk:4,
-action:"Test extraction accuracy on a representative sample before connecting the workflow to production systems."
-},
-{
-name:"Internal Knowledge Assistant",
-area:"Operational Efficiency",
-themes:["knowledge","internal information","training","documentation","employees","find information","questions"],
-data:["documents","knowledge","manual","policy","documentation"],
-value:7,customer:5,feasibility:8,speed:8,complexity:4,risk:4,
-action:"Start with approved internal documents and measure answer quality, adoption and employee time saved."
-},
-{
-name:"Conversational Search & Discovery",
-area:"Customer Experience",
-themes:["search","find","discovery","listings","catalog","navigation","relevant","results","matching"],
-data:["listings","catalog","product","search","behaviour","behavior"],
-value:9,customer:10,feasibility:7,speed:7,complexity:6,risk:4,
-action:"Prototype conversational discovery on a limited catalogue and compare engagement and task completion with traditional search."
-},
-{
-name:"Personalized Customer Journey",
-area:"Customer Experience",
-themes:["customer experience","journey","personalization","engagement","retention","relevance","conversion"],
-data:["crm","behaviour","behavior","transaction","customer","website"],
-value:8,customer:9,feasibility:7,speed:6,complexity:6,risk:4,
-action:"Identify one high-friction journey and test where personalization can improve relevance or remove friction."
-},
-{
-name:"AI Customer Support Agent",
-area:"Customer Support & Service",
-themes:["support","ticket","email","repetitive request","customer service","contact center","response time","volume"],
-data:["ticket","email","chat","knowledge","support","conversation"],
-value:9,customer:8,feasibility:8,speed:9,complexity:5,risk:5,
-action:"Automate a narrow group of high-volume repetitive requests with explicit escalation to human agents."
-},
-{
-name:"Customer-Service Agent Copilot",
-area:"Customer Support & Service",
-themes:["support","agent","calls","ticket","response","customer service","service team"],
-data:["ticket","email","call","conversation","knowledge","support"],
-value:8,customer:8,feasibility:9,speed:9,complexity:4,risk:3,
-action:"Pilot suggested responses and conversation summaries while keeping agents responsible for final decisions."
-},
-{
-name:"Support Quality & Sentiment Intelligence",
-area:"Customer Support & Service",
-themes:["complaint","sentiment","quality","satisfaction","feedback","calls","support"],
-data:["call","conversation","ticket","feedback","survey","email"],
-value:7,customer:8,feasibility:8,speed:7,complexity:5,risk:4,
-action:"Analyze historical interactions to identify recurring issues, sentiment patterns and coaching opportunities."
-},
-{
-name:"Predictive Churn & Retention Intelligence",
-area:"Decision Intelligence",
-themes:["churn","retention","leaving","cancel","renewal","loyalty","declining retention","attrition"],
-data:["crm","subscription","transaction","usage","customer","renewal"],
-value:10,customer:8,feasibility:6,speed:5,complexity:7,risk:5,
-action:"Define churn precisely, identify historical signals and test whether existing data can identify elevated risk early enough to act."
-},
-{
-name:"AI Market & Competitive Intelligence",
-area:"Decision Intelligence",
-themes:["competitor","competition","market","research","international","expansion","strategy","market intelligence"],
-data:["market","competitor","research","documents","web"],
-value:8,customer:5,feasibility:8,speed:8,complexity:4,risk:3,
-action:"Choose a recurring management question and build a controlled intelligence workflow around trusted sources."
-},
-{
-name:"Forecasting & Predictive Analytics",
-area:"Decision Intelligence",
-themes:["forecast","demand","inventory","planning","capacity","prediction","forecasting"],
-data:["historical","sales","inventory","transaction","demand"],
-value:8,customer:5,feasibility:6,speed:5,complexity:7,risk:5,
-action:"Select one decision with sufficient historical data and benchmark AI-assisted forecasting against the current method."
-},
-{
-name:"AI-Enabled Product or Service",
-area:"Strategic Advantage & New Business Models",
-themes:["new product","new revenue","innovation","business model","competitive advantage","new service"],
-data:["customer","product","transaction","usage","market"],
-value:10,customer:9,feasibility:5,speed:4,complexity:8,risk:6,
-action:"Identify a customer problem AI could solve materially better and test willingness to use or pay before building at scale."
-},
-{
-name:"AI Agent for Customer Tasks",
-area:"Strategic Advantage & New Business Models",
-themes:["agent","booking","transaction","purchase","customer task","automation","action"],
-data:["customer","transaction","workflow","product","account"],
-value:9,customer:9,feasibility:5,speed:4,complexity:8,risk:7,
-action:"Choose one bounded, reversible customer task and prototype it with confirmation controls and human fallback."
-}
+const opportunities=[
+{name:"AI Sales Research & Lead Intelligence",area:"Revenue Growth",themes:["sales","prospect","lead","acquisition","pipeline","business development","research"],data:["crm","customer","sales","lead","website"],value:9,customer:6,feasibility:8,speed:8,complexity:4,risk:3,action:"Pilot with one sales team. Measure research time, qualified opportunities and conversion against the existing process."},
+{name:"Personalized Offers & Recommendations",area:"Revenue Growth",themes:["personalization","conversion","upsell","cross sell","recommendation","relevance","engagement"],data:["transaction","behaviour","behavior","customer","purchase","crm"],value:9,customer:9,feasibility:7,speed:6,complexity:6,risk:4,action:"Select one high-volume customer journey and test whether behavioural or transactional data can improve relevance and conversion."},
+{name:"Pricing & Monetization Optimization",area:"Revenue Growth",themes:["pricing","price","margin","monetization","revenue","yield","conversion"],data:["pricing","transaction","sales","conversion","purchase"],value:10,customer:6,feasibility:6,speed:6,complexity:7,risk:5,action:"Establish a baseline for price, conversion and margin in one segment before testing AI-assisted optimization."},
+{name:"Workflow Automation",area:"Operational Efficiency",themes:["manual","repetitive","administrative","workflow","slow","processing","back office","hours","time consuming"],data:["documents","email","workflow","process","system"],value:8,customer:5,feasibility:9,speed:9,complexity:3,risk:3,action:"Map one high-volume repetitive process, quantify current labour time and automate the lowest-risk steps first."},
+{name:"Document Processing & Extraction",area:"Operational Efficiency",themes:["document","invoice","contract","forms","paperwork","data entry","processing"],data:["document","pdf","invoice","contract","forms"],value:7,customer:5,feasibility:9,speed:8,complexity:4,risk:4,action:"Test extraction accuracy on a representative sample before connecting the workflow to production systems."},
+{name:"Internal Knowledge Assistant",area:"Operational Efficiency",themes:["knowledge","internal information","training","documentation","employees","find information","questions"],data:["documents","knowledge","manual","policy","documentation"],value:7,customer:5,feasibility:8,speed:8,complexity:4,risk:4,action:"Start with approved internal documents and measure answer quality, adoption and employee time saved."},
+{name:"Conversational Search & Discovery",area:"Customer Experience",themes:["search","find","discovery","listings","catalog","navigation","relevant","results","matching"],data:["listings","catalog","product","search","behaviour","behavior"],value:9,customer:10,feasibility:7,speed:7,complexity:6,risk:4,action:"Prototype conversational discovery on a limited catalogue and compare engagement and task completion with traditional search."},
+{name:"Personalized Customer Journey",area:"Customer Experience",themes:["customer experience","journey","personalization","engagement","retention","relevance","conversion"],data:["crm","behaviour","behavior","transaction","customer","website"],value:8,customer:9,feasibility:7,speed:6,complexity:6,risk:4,action:"Identify one high-friction journey and test where personalization can improve relevance or remove friction."},
+{name:"AI Customer Support Agent",area:"Customer Support & Service",themes:["support","ticket","email","repetitive request","customer service","contact center","response time","volume"],data:["ticket","email","chat","knowledge","support","conversation"],value:9,customer:8,feasibility:8,speed:9,complexity:5,risk:5,action:"Automate a narrow group of high-volume repetitive requests with explicit escalation to human agents."},
+{name:"Customer-Service Agent Copilot",area:"Customer Support & Service",themes:["support","agent","calls","ticket","response","customer service","service team"],data:["ticket","email","call","conversation","knowledge","support"],value:8,customer:8,feasibility:9,speed:9,complexity:4,risk:3,action:"Pilot suggested responses and conversation summaries while keeping agents responsible for final decisions."},
+{name:"Support Quality & Sentiment Intelligence",area:"Customer Support & Service",themes:["complaint","sentiment","quality","satisfaction","feedback","calls","support"],data:["call","conversation","ticket","feedback","survey","email"],value:7,customer:8,feasibility:8,speed:7,complexity:5,risk:4,action:"Analyze historical interactions to identify recurring issues, sentiment patterns and coaching opportunities."},
+{name:"Predictive Churn & Retention Intelligence",area:"Decision Intelligence",themes:["churn","retention","leaving","cancel","renewal","loyalty","declining retention","attrition"],data:["crm","subscription","transaction","usage","customer","renewal"],value:10,customer:8,feasibility:6,speed:5,complexity:7,risk:5,action:"Define churn precisely, identify historical signals and test whether existing data can identify elevated risk early enough to act."},
+{name:"AI Market & Competitive Intelligence",area:"Decision Intelligence",themes:["competitor","competition","market","research","international","expansion","strategy","market intelligence"],data:["market","competitor","research","documents","web"],value:8,customer:5,feasibility:8,speed:8,complexity:4,risk:3,action:"Choose a recurring management question and build a controlled intelligence workflow around trusted sources."},
+{name:"Forecasting & Predictive Analytics",area:"Decision Intelligence",themes:["forecast","demand","inventory","planning","capacity","prediction","forecasting"],data:["historical","sales","inventory","transaction","demand"],value:8,customer:5,feasibility:6,speed:5,complexity:7,risk:5,action:"Select one decision with sufficient historical data and benchmark AI-assisted forecasting against the current method."},
+{name:"AI-Enabled Product or Service",area:"Strategic Advantage & New Business Models",themes:["new product","new revenue","innovation","business model","competitive advantage","new service"],data:["customer","product","transaction","usage","market"],value:10,customer:9,feasibility:5,speed:4,complexity:8,risk:6,action:"Identify a customer problem AI could solve materially better and test willingness to use or pay before building at scale."},
+{name:"AI Agent for Customer Tasks",area:"Strategic Advantage & New Business Models",themes:["agent","booking","transaction","purchase","customer task","automation","action"],data:["customer","transaction","workflow","product","account"],value:9,customer:9,feasibility:5,speed:4,complexity:8,risk:7,action:"Choose one bounded, reversible customer task and prototype it with confirmation controls and human fallback."}
 ];
 
 const objectiveArea={
@@ -331,10 +269,11 @@ const objectiveArea={
 let current=[];
 let originalRanks={};
 let adjustments={};
+let currentCaseId=null;
+let currentCreated=null;
 
 function esc(v){
-return String(v).replaceAll("&","&amp;").replaceAll("<","&lt;")
-.replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
+return String(v).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
 }
 
 function countSignals(text,terms){
@@ -350,44 +289,58 @@ if(o.name.includes("Knowledge")||o.name.includes("Document")||o.name.includes("I
 return"Experiment";
 }
 
+function getInputs(){
+return{
+caseName:document.getElementById("caseName").value.trim(),
+company:document.getElementById("company").value.trim(),
+industry:document.getElementById("industry").value.trim(),
+model:document.getElementById("model").value,
+size:document.getElementById("size").value,
+objective:document.getElementById("objective").value,
+challenges:document.getElementById("challenges").value.trim(),
+customers:document.getElementById("customers").value.trim(),
+data:document.getElementById("data").value.trim()
+};
+}
+
+function setInputs(x){
+document.getElementById("caseName").value=x.caseName||"";
+document.getElementById("company").value=x.company||"";
+document.getElementById("industry").value=x.industry||"";
+document.getElementById("model").value=x.model||"B2B";
+document.getElementById("size").value=x.size||"Startup / Small Business";
+document.getElementById("objective").value=x.objective||"Grow revenue";
+document.getElementById("challenges").value=x.challenges||"";
+document.getElementById("customers").value=x.customers||"";
+document.getElementById("data").value=x.data||"";
+}
+
 function generateMap(){
-
-const company=document.getElementById("company").value.trim()||"The organization";
-const industry=document.getElementById("industry").value.trim()||"the selected industry";
-const model=document.getElementById("model").value;
-const size=document.getElementById("size").value;
-const objective=document.getElementById("objective").value;
-const challenges=document.getElementById("challenges").value.trim();
-const customers=document.getElementById("customers").value.trim()||"its customers";
-const data=document.getElementById("data").value.trim();
-
-const challengeText=(challenges+" "+customers).toLowerCase();
-const dataText=data.toLowerCase();
+const x=getInputs();
+const company=x.company||"The organization";
+const industry=x.industry||"the selected industry";
+const customers=x.customers||"its customers";
+const challengeText=(x.challenges+" "+customers).toLowerCase();
+const dataText=x.data.toLowerCase();
 
 current=opportunities.map(o=>{
-
 const challengeHits=countSignals(challengeText,o.themes);
 const dataHits=countSignals(dataText,o.data);
-
-let strategicFit=o.area===objectiveArea[objective]?20:0;
+let strategicFit=o.area===objectiveArea[x.objective]?20:0;
 let challengeFit=challengeHits*8;
 let dataFit=dataHits*4;
-
 let modelFit=0;
-if(model==="Marketplace / Platform"&&
-(o.name.includes("Search")||o.name.includes("Pricing")||o.name.includes("Personalized")))modelFit=7;
-if(model==="B2B"&&(o.name.includes("Sales")||o.name.includes("Knowledge")||o.name.includes("Market")))modelFit=6;
-if(model==="E-commerce"&&(o.name.includes("Personalized")||o.name.includes("Pricing")||o.name.includes("Support")))modelFit=6;
-if(model==="Professional Services"&&(o.name.includes("Knowledge")||o.name.includes("Document")||o.name.includes("Market")))modelFit=6;
+
+if(x.model==="Marketplace / Platform"&&(o.name.includes("Search")||o.name.includes("Pricing")||o.name.includes("Personalized")))modelFit=7;
+if(x.model==="B2B"&&(o.name.includes("Sales")||o.name.includes("Knowledge")||o.name.includes("Market")))modelFit=6;
+if(x.model==="E-commerce"&&(o.name.includes("Personalized")||o.name.includes("Pricing")||o.name.includes("Support")))modelFit=6;
+if(x.model==="Professional Services"&&(o.name.includes("Knowledge")||o.name.includes("Document")||o.name.includes("Market")))modelFit=6;
 
 let sizeFit=0;
-if(size==="Startup / Small Business"&&o.complexity>=8)sizeFit=-6;
-if(size==="Large Enterprise"&&o.name.includes("Workflow"))sizeFit=3;
+if(x.size==="Startup / Small Business"&&o.complexity>=8)sizeFit=-6;
+if(x.size==="Large Enterprise"&&o.name.includes("Workflow"))sizeFit=3;
 
-const fundamentals=
-(o.value*1.5)+(o.customer*.8)+(o.feasibility*1.2)+(o.speed*.8)
--(o.complexity*.7)-(o.risk*.5);
-
+const fundamentals=(o.value*1.5)+(o.customer*.8)+(o.feasibility*1.2)+(o.speed*.8)-(o.complexity*.7)-(o.risk*.5);
 let score=Math.round(fundamentals+strategicFit+challengeFit+dataFit+modelFit+sizeFit);
 score=Math.max(0,Math.min(100,score));
 
@@ -398,56 +351,51 @@ if(dataHits)reasons.push("supporting data or digital assets appear to be availab
 if(modelFit)reasons.push("good fit with the business model");
 if(!challengeHits)reasons.push("limited direct evidence in the stated challenges");
 
-return{
-...o,score,challengeHits,dataHits,modelFit,
-classification:classify(o),
-reason:reasons
-};
+return{...o,score,challengeHits,dataHits,modelFit,classification:classify(o),reason:reasons};
 });
 
 current.sort((a,b)=>b.score-a.score);
-
 originalRanks={};
 adjustments={};
-
-current.forEach((o,i)=>{
-originalRanks[o.name]=i+1;
-adjustments[o.name]=0;
-});
-
+current.forEach((o,i)=>{originalRanks[o.name]=i+1;adjustments[o.name]=0});
 current=current.slice(0,7);
 
-let detected=[];
-current.forEach(o=>{
-if(o.challengeHits>0)detected.push(o.area);
-});
-detected=[...new Set(detected)];
-
-document.getElementById("summary").innerHTML=
-"<strong>"+esc(company)+"</strong> is assessed as a <strong>"+esc(size)+"</strong> "+
-esc(model)+" business in <strong>"+esc(industry)+"</strong>. Its primary objective is to <strong>"+
-esc(objective.toLowerCase())+"</strong>.<br><br>"+
-"The framework found the strongest contextual signals around <strong>"+
-esc(detected.length?detected.join(", "):"the selected strategic objective")+
-"</strong>. The ranking below combines business fundamentals with the challenges and data assets you supplied."+
-'<div class="context-signals">'+
-'<span class="signal">Context-driven ranking</span>'+
-'<span class="signal">Data readiness considered</span>'+
-'<span class="signal">Management override enabled</span>'+
-'</div>';
-
+renderSummary();
 render();
 document.getElementById("results").style.display="block";
 document.getElementById("results").scrollIntoView({behavior:"smooth"});
 }
 
-function render(){
+function renderSummary(){
+const x=getInputs();
+if(!current.length)return;
 
+let detected=[];
+current.forEach(o=>{if(o.challengeHits>0)detected.push(o.area)});
+detected=[...new Set(detected)];
+
+document.getElementById("summary").innerHTML=
+"<strong>"+esc(x.caseName||"Current AI Opportunity Assessment")+"</strong><br><br>"+
+"<strong>"+esc(x.company||"The organization")+"</strong> is assessed as a <strong>"+
+esc(x.size)+"</strong> "+esc(x.model)+" business in <strong>"+
+esc(x.industry||"the selected industry")+"</strong>. Its primary objective is to <strong>"+
+esc(x.objective.toLowerCase())+"</strong>.<br><br>"+
+"The strongest contextual signals relate to <strong>"+
+esc(detected.length?detected.join(", "):"the selected strategic objective")+
+"</strong>."+
+'<div class="context-signals">'+
+'<span class="signal">Context-driven ranking</span>'+
+'<span class="signal">Data readiness considered</span>'+
+'<span class="signal">Management override enabled</span>'+
+'<span class="signal">Case export enabled</span>'+
+'</div>';
+}
+
+function render(){
 const container=document.getElementById("opportunities");
 container.innerHTML="";
 
 current.forEach((o,index)=>{
-
 const adj=adjustments[o.name]||0;
 const calibrated=Math.max(0,Math.min(100,o.score+adj));
 const moved=originalRanks[o.name]!==index+1;
@@ -458,48 +406,32 @@ div.className="opportunity";
 div.innerHTML=
 '<div class="opportunity-top"><div>'+
 '<div class="rank">Management rank #'+(index+1)+' · Model rank #'+originalRanks[o.name]+'</div>'+
-'<h3>'+esc(o.name)+'</h3>'+
-'<div class="area">'+esc(o.area)+'</div>'+
-'</div><div class="score">'+calibrated+'/100<small>calibrated score</small></div></div>'+
-
+'<h3>'+esc(o.name)+'</h3><div class="area">'+esc(o.area)+'</div></div>'+
+'<div class="score">'+calibrated+'/100<small>calibrated score</small></div></div>'+
 '<div class="badges"><span class="badge">'+esc(o.classification)+'</span>'+
 (moved?'<span class="badge">Management reordered</span>':'')+
-(adj!==0?'<span class="badge">'+(adj>0?'+':'')+adj+' management adjustment</span>':'')+
-'</div>'+
-
+(adj!==0?'<span class="badge">'+(adj>0?'+':'')+adj+' management adjustment</span>':'')+'</div>'+
 '<div class="bar"><div class="fill" style="width:'+calibrated+'%"></div></div>'+
-
 '<div class="score-grid">'+
 '<div class="metric"><span>Business Value</span><strong>'+o.value+'/10</strong></div>'+
 '<div class="metric"><span>Customer Value</span><strong>'+o.customer+'/10</strong></div>'+
 '<div class="metric"><span>Feasibility</span><strong>'+o.feasibility+'/10</strong></div>'+
 '<div class="metric"><span>Time to Impact</span><strong>'+o.speed+'/10</strong></div>'+
 '<div class="metric"><span>Complexity</span><strong>'+o.complexity+'/10</strong></div>'+
-'<div class="metric"><span>Risk</span><strong>'+o.risk+'/10</strong></div>'+
-'</div>'+
-
-'<div class="reason"><strong>Why it ranked here:</strong> '+
-esc(o.reason.length?o.reason.join("; "):"strong underlying business and feasibility characteristics")+
-'.</div>'+
-
+'<div class="metric"><span>Risk</span><strong>'+o.risk+'/10</strong></div></div>'+
+'<div class="reason"><strong>Why it ranked here:</strong> '+esc(o.reason.length?o.reason.join("; "):"strong underlying business and feasibility characteristics")+'.</div>'+
 '<div class="action"><strong>Recommended first step:</strong> '+esc(o.action)+'</div>'+
-
-'<div class="calibration">'+
-'<div class="calibration-title">Management calibration</div>'+
+'<div class="calibration"><div class="calibration-title">Management calibration</div>'+
 '<div class="controls">'+
 '<button class="control" onclick="moveItem('+index+',-1)">↑ Move up</button>'+
 '<button class="control" onclick="moveItem('+index+',1)">↓ Move down</button>'+
 '<button class="control boost" onclick="adjustScore('+index+',5)">More important +5</button>'+
 '<button class="control reduce" onclick="adjustScore('+index+',-5)">Less important −5</button>'+
-'<button class="control" onclick="resetItem('+index+')">Reset score</button>'+
-'</div>'+
-'<div class="override-note">Model score: '+o.score+
-'/100. Management adjustments remain visible rather than replacing the original assessment.</div>'+
-'</div>';
+'<button class="control" onclick="resetItem('+index+')">Reset score</button></div>'+
+'<div class="override-note">Model score: '+o.score+'/100. Management adjustments remain visible.</div></div>';
 
 container.appendChild(div);
 });
-
 renderPortfolio();
 }
 
@@ -523,22 +455,10 @@ render();
 }
 
 function renderPortfolio(){
-
-const groups={
-"Quick Win":[],
-"Strategic Bet":[],
-"Enabler":[],
-"Experiment":[]
-};
-
+const groups={"Quick Win":[],"Strategic Bet":[],"Enabler":[],"Experiment":[]};
 current.forEach((o,index)=>{
-groups[o.classification].push({
-name:o.name,
-rank:index+1,
-score:Math.max(0,Math.min(100,o.score+(adjustments[o.name]||0)))
+groups[o.classification].push({name:o.name,rank:index+1,score:Math.max(0,Math.min(100,o.score+(adjustments[o.name]||0)))});
 });
-});
-
 fill("quick",groups["Quick Win"]);
 fill("strategic",groups["Strategic Bet"]);
 fill("enablers",groups["Enabler"]);
@@ -548,18 +468,241 @@ fill("experiments",groups["Experiment"]);
 function fill(id,items){
 const el=document.getElementById(id);
 el.innerHTML="";
-
-if(!items.length){
-el.innerHTML="<li>No current opportunities in this category.</li>";
-return;
-}
-
+if(!items.length){el.innerHTML="<li>No current opportunities in this category.</li>";return}
 items.forEach(o=>{
 const li=document.createElement("li");
 li.textContent="#"+o.rank+" "+o.name+" — "+o.score+"/100";
 el.appendChild(li);
 });
 }
+
+function getCases(){
+try{return JSON.parse(localStorage.getItem("aiOpportunityCases")||"[]")}
+catch(e){return[]}
+}
+
+function storeCases(cases){
+localStorage.setItem("aiOpportunityCases",JSON.stringify(cases));
+}
+
+function saveCase(){
+const x=getInputs();
+
+if(!x.caseName){
+alert("Please give this case a Case Name before saving.");
+document.getElementById("caseName").focus();
+return;
+}
+
+if(!current.length){
+alert("Please analyze the case before saving it.");
+return;
+}
+
+const now=new Date().toISOString();
+if(!currentCaseId)currentCaseId="case_"+Date.now();
+if(!currentCreated)currentCreated=now;
+
+const record={
+id:currentCaseId,
+created:currentCreated,
+updated:now,
+inputs:x,
+current:current,
+originalRanks:originalRanks,
+adjustments:adjustments
+};
+
+let cases=getCases();
+const index=cases.findIndex(c=>c.id===currentCaseId);
+if(index>=0)cases[index]=record;
+else cases.unshift(record);
+
+storeCases(cases);
+document.getElementById("caseStatus").textContent="Saved · "+new Date(now).toLocaleString();
+renderSavedCases();
+}
+
+function loadCase(id){
+const record=getCases().find(c=>c.id===id);
+if(!record)return;
+
+currentCaseId=record.id;
+currentCreated=record.created;
+setInputs(record.inputs);
+current=record.current||[];
+originalRanks=record.originalRanks||{};
+adjustments=record.adjustments||{};
+
+renderSummary();
+render();
+document.getElementById("results").style.display=current.length?"block":"none";
+document.getElementById("caseStatus").textContent="Loaded · last updated "+new Date(record.updated).toLocaleString();
+window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function duplicateCase(id){
+const source=getCases().find(c=>c.id===id);
+if(!source)return;
+
+const copy=JSON.parse(JSON.stringify(source));
+copy.id="case_"+Date.now();
+copy.created=new Date().toISOString();
+copy.updated=copy.created;
+copy.inputs.caseName=(copy.inputs.caseName||"Case")+" — Copy";
+
+let cases=getCases();
+cases.unshift(copy);
+storeCases(cases);
+renderSavedCases();
+loadCase(copy.id);
+}
+
+function deleteCase(id){
+if(!confirm("Delete this saved case? This cannot be undone."))return;
+let cases=getCases().filter(c=>c.id!==id);
+storeCases(cases);
+
+if(currentCaseId===id)newCase();
+renderSavedCases();
+}
+
+function newCase(){
+currentCaseId=null;
+currentCreated=null;
+current=[];
+originalRanks={};
+adjustments={};
+setInputs({});
+document.getElementById("results").style.display="none";
+document.getElementById("caseStatus").textContent="Unsaved case";
+window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function renderSavedCases(){
+const cases=getCases();
+const el=document.getElementById("savedCases");
+el.innerHTML="";
+
+if(!cases.length){
+el.innerHTML='<p class="empty">No saved cases yet.</p>';
+return;
+}
+
+cases.sort((a,b)=>new Date(b.updated)-new Date(a.updated));
+
+cases.forEach(c=>{
+const div=document.createElement("div");
+div.className="saved-case";
+div.innerHTML=
+"<h3>"+esc(c.inputs.caseName||"Untitled Case")+"</h3>"+
+'<div class="saved-meta">'+esc(c.inputs.company||"No company")+" · "+
+esc(c.inputs.industry||"No industry")+"<br>"+
+"Objective: "+esc(c.inputs.objective||"")+"<br>"+
+"Updated: "+new Date(c.updated).toLocaleString()+"</div>"+
+'<div class="saved-actions">'+
+'<button class="secondary" onclick="loadCase(\''+c.id+'\')">Open / Edit</button>'+
+'<button class="secondary" onclick="duplicateCase(\''+c.id+'\')">Duplicate</button>'+
+'<button class="danger" onclick="deleteCase(\''+c.id+'\')">Delete</button>'+
+"</div>";
+el.appendChild(div);
+});
+}
+
+function exportRows(){
+const x=getInputs();
+return current.map((o,index)=>({
+caseName:x.caseName,
+company:x.company,
+industry:x.industry,
+businessModel:x.model,
+companySize:x.size,
+objective:x.objective,
+managementRank:index+1,
+modelRank:originalRanks[o.name],
+opportunity:o.name,
+area:o.area,
+classification:o.classification,
+modelScore:o.score,
+managementAdjustment:adjustments[o.name]||0,
+calibratedScore:Math.max(0,Math.min(100,o.score+(adjustments[o.name]||0))),
+businessValue:o.value,
+customerValue:o.customer,
+feasibility:o.feasibility,
+timeToImpact:o.speed,
+complexity:o.complexity,
+risk:o.risk,
+rationale:o.reason.join("; "),
+recommendedFirstStep:o.action
+}));
+}
+
+function downloadFile(filename,content,type){
+const blob=new Blob([content],{type:type});
+const url=URL.createObjectURL(blob);
+const a=document.createElement("a");
+a.href=url;
+a.download=filename;
+document.body.appendChild(a);
+a.click();
+a.remove();
+URL.revokeObjectURL(url);
+}
+
+function safeFilename(){
+const name=document.getElementById("caseName").value.trim()||"ai-opportunity-case";
+return name.replace(/[^a-z0-9-_]+/gi,"_");
+}
+
+function exportCSV(){
+if(!current.length){alert("Analyze or open a case first.");return}
+const rows=exportRows();
+const headers=Object.keys(rows[0]);
+const csv=[
+headers.join(","),
+...rows.map(r=>headers.map(h=>'"'+String(r[h]??"").replaceAll('"','""')+'"').join(","))
+].join("\n");
+downloadFile(safeFilename()+".csv",csv,"text/csv;charset=utf-8");
+}
+
+function exportTXT(){
+if(!current.length){alert("Analyze or open a case first.");return}
+const x=getInputs();
+
+let text=
+"AI BUSINESS OPPORTUNITY ASSESSMENT\n"+
+"==================================\n\n"+
+"Case: "+x.caseName+"\n"+
+"Company: "+x.company+"\n"+
+"Industry: "+x.industry+"\n"+
+"Business Model: "+x.model+"\n"+
+"Company Size: "+x.size+"\n"+
+"Primary Objective: "+x.objective+"\n\n"+
+"KEY BUSINESS CHALLENGES\n"+x.challenges+"\n\n"+
+"CUSTOMERS\n"+x.customers+"\n\n"+
+"AVAILABLE DATA & DIGITAL ASSETS\n"+x.data+"\n\n"+
+"PRIORITIZED OPPORTUNITIES\n"+
+"-------------------------\n\n";
+
+current.forEach((o,index)=>{
+const calibrated=Math.max(0,Math.min(100,o.score+(adjustments[o.name]||0)));
+text+=
+"#"+(index+1)+" "+o.name+"\n"+
+"Area: "+o.area+"\n"+
+"Classification: "+o.classification+"\n"+
+"Model Rank: #"+originalRanks[o.name]+"\n"+
+"Management Rank: #"+(index+1)+"\n"+
+"Model Score: "+o.score+"/100\n"+
+"Management Adjustment: "+(adjustments[o.name]||0)+"\n"+
+"Calibrated Score: "+calibrated+"/100\n"+
+"Why it ranked here: "+o.reason.join("; ")+"\n"+
+"Recommended First Step: "+o.action+"\n\n";
+});
+
+downloadFile(safeFilename()+".txt",text,"text/plain;charset=utf-8");
+}
+
+renderSavedCases();
 
 </script>
 </body>
