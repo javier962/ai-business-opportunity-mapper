@@ -58,7 +58,15 @@ The resulting architecture is deliberately hybrid:
 
 # Product Preview
 
-## 1. Executive AI Opportunity Snapshot
+## 1. AI-Assisted Opportunity Discovery
+
+V3 adds an LLM-powered discovery layer that semantically interprets the business context and identifies contextual AI opportunities beyond the predefined library.
+
+The AI explains why each opportunity matters, connects it to evidence from the business case, proposes a practical first step and suggests measurable KPIs.
+
+![AI Business Opportunity Mapper — V3 AI-Assisted Opportunity Discovery](assets/V3-AI-Discovery.png)
+
+## 2. Executive AI Opportunity Snapshot
 
 A concise management view of the highest-priority AI opportunities — turning business context into an immediately understandable strategic shortlist.
 
@@ -66,7 +74,7 @@ A concise management view of the highest-priority AI opportunities — turning b
 
 ---
 
-## 2. Management Calibration
+## 3. Management Calibration
 
 The analytical model provides the initial recommendation, but management retains control.
 
@@ -76,7 +84,7 @@ Original model rankings remain visible while executives can reorder priorities a
 
 ---
 
-## 3. From Opportunity to Execution
+## 4. From Opportunity to Execution
 
 The management-calibrated Top 3 are automatically translated into practical 90-day action plans — moving from validation, to pilot, to an evidence-based **Scale / Iterate / Stop** decision.
 
