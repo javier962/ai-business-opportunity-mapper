@@ -177,8 +177,15 @@ async function analyzeWithAI() {
 
   section.style.display = "block";
 
-  interpretation.innerHTML = "";
-  list.innerHTML = "";
+const results =
+  document.getElementById("results");
+
+if (results) {
+  results.style.display = "block";
+}
+
+interpretation.innerHTML = "";
+list.innerHTML = "";
 
   setAIStatus(
     "AI is interpreting the business context " +
