@@ -1,70 +1,173 @@
 # AI Business Opportunity Mapper
 
-### From business challenge → AI opportunity → management decision → 90-day action plan
+### From business challenge → AI discovery → structured evaluation → management decision → 90-day execution plan
 
-A practical decision-support application for identifying, evaluating and prioritizing where AI can create measurable business value.
+A practical AI-enabled decision-support application for identifying, evaluating and prioritizing where artificial intelligence can create measurable business value.
+
+**V3 combines generative AI with a transparent strategic prioritization framework and human management judgment.**
 
 **Live application:**  
 https://javier962.github.io/ai-business-opportunity-mapper/
 
 ---
-## Product Preview
 
-### 1. Executive AI Opportunity Snapshot
+# The Idea
 
-A concise management view of the highest-priority AI opportunities — turning business context into an immediately understandable strategic shortlist.
+Organizations increasingly know they should be exploring AI.
 
-![AI Business Opportunity Mapper — Executive Snapshot](assets/IMG_8875.jpeg)
+The harder question is:
 
-### 2. Management Calibration
+> **Where should we actually use it?**
 
-The model provides the initial recommendation, but management retains control. Original model rankings remain visible while executives can reorder priorities and adjust strategic importance.
+AI strategy conversations often begin with technology:
 
-![AI Business Opportunity Mapper — Management Calibration](assets/IMG_8879.jpeg)
+- Which AI model should we use?
+- Which tools should we deploy?
+- Where can we add generative AI?
+- Which processes can we automate?
 
-### 3. From Opportunity to Execution
-
-The management-calibrated Top 3 are automatically translated into practical 90-day action plans — moving from validation, to pilot, to an evidence-based Scale, Iterate or Stop decision.
-
-![AI Business Opportunity Mapper — 90-Day Action Plan](assets/IMG_8877.jpeg)
-
-> **The model informs the decision. Management owns the decision.**
-## Why I Built This
-
-AI strategy conversations often start with technology:
-
-> Which AI model should we use?  
-> Which tools should we deploy?  
-> Where can we add generative AI?
-
-I believe the more useful starting point for management is different:
+I believe the more useful management starting point is different:
 
 > **What business problem are we trying to solve, what value could solving it create, and is AI the right way to address it?**
 
 I built the **AI Business Opportunity Mapper** to explore that approach.
 
-Rather than starting with AI capabilities and looking for somewhere to deploy them, the application starts with the company:
+The application starts with the business — its objectives, customers, challenges, business model and available data — and converts that context into potential AI initiatives.
 
-- its business model
-- strategic objectives
-- customer needs
-- operational challenges
+V3 adds a real LLM-powered discovery layer capable of interpreting business context and identifying opportunities beyond the application's predefined opportunity library.
+
+The resulting architecture is deliberately hybrid:
+
+**AI discovers and reasons**
+
+↓
+
+**A structured framework evaluates and prioritizes**
+
+↓
+
+**Management challenges and calibrates**
+
+↓
+
+**The application converts priorities into a 90-day execution plan**
+
+> **AI discovers and reasons. The framework evaluates. Management decides.**
+
+---
+
+# Product Preview
+
+## 1. Executive AI Opportunity Snapshot
+
+A concise management view of the highest-priority AI opportunities — turning business context into an immediately understandable strategic shortlist.
+
+![AI Business Opportunity Mapper — Executive Snapshot](assets/IMG_8875.jpeg)
+
+---
+
+## 2. Management Calibration
+
+The analytical model provides the initial recommendation, but management retains control.
+
+Original model rankings remain visible while executives can reorder priorities and adjust strategic importance.
+
+![AI Business Opportunity Mapper — Management Calibration](assets/IMG_8879.jpeg)
+
+---
+
+## 3. From Opportunity to Execution
+
+The management-calibrated Top 3 are automatically translated into practical 90-day action plans — moving from validation, to pilot, to an evidence-based **Scale / Iterate / Stop** decision.
+
+![AI Business Opportunity Mapper — 90-Day Action Plan](assets/IMG_8877.jpeg)
+
+---
+
+# What's New in V3 — AI-Assisted Opportunity Discovery
+
+V3 introduces an LLM-powered **AI-Assisted Opportunity Discovery** layer.
+
+The user provides business context including:
+
+- company
+- industry
+- business model
+- company size
+- primary strategic objective
+- key business challenges
+- customer type
 - available data and digital assets
-- implementation constraints
 
-It then translates that context into a prioritized portfolio of potential AI initiatives.
+The application can then send this context securely to an LLM for semantic interpretation.
 
-The objective is not to allow an algorithm to make the strategy decision.
+Instead of simply matching keywords against a predefined library, the AI can reason about the specific business situation and propose contextual opportunities that may otherwise be missed.
 
-The objective is to combine **structured analysis with management judgment**.
+For each AI-discovered opportunity, the application can provide:
+
+- opportunity name
+- strategic area
+- description
+- why it matters
+- evidence from the business context
+- recommended first step
+- suggested KPIs
+
+The LLM does **not** determine the final strategic ranking.
+
+This separation is intentional.
+
+Generative AI is used where it is strongest:
+
+**interpretation, contextual reasoning and discovery.**
+
+The structured framework is used where consistency and transparency matter:
+
+**evaluation and prioritization.**
+
+Management retains responsibility for the final decision.
+
+---
+
+# Two Complementary Analytical Layers
+
+V3 now contains two different ways of looking at the same business problem.
+
+## Structured Model
+
+The structured model evaluates a defined library of AI opportunities using transparent criteria.
+
+Its advantages are:
+
+- consistency
+- repeatability
+- inspectability
+- comparable scoring
+- management auditability
+
+## AI Discovery
+
+The generative AI layer interprets the business context semantically and searches for opportunities that may not fit neatly into a predefined library.
+
+Its advantages are:
+
+- contextual understanding
+- flexibility
+- richer reasoning
+- discovery of less obvious opportunities
+- industry-specific interpretation
+
+Neither approach is sufficient on its own.
+
+The objective of the project is to explore how **generative intelligence, structured decision frameworks and human judgment can work together**.
 
 ---
 
 # What the Application Does
 
-The application takes a business through five stages:
+The application takes a business through six stages.
 
-### 1. Understand the Business
+## 1. Understand the Business
 
 The user describes:
 
@@ -77,9 +180,19 @@ The user describes:
 - customer type
 - available data and digital assets
 
-### 2. Identify AI Opportunities
+---
 
-The framework evaluates potential initiatives across six dimensions:
+## 2. Discover AI Opportunities
+
+The LLM-powered discovery layer interprets the company's context and identifies potential AI opportunities based on the actual business situation.
+
+This complements the application's structured opportunity library.
+
+---
+
+## 3. Evaluate AI Opportunities
+
+The structured framework evaluates opportunities across six areas:
 
 1. **Revenue Growth**
 2. **Operational Efficiency**
@@ -90,33 +203,34 @@ The framework evaluates potential initiatives across six dimensions:
 
 Examples include:
 
-- AI sales intelligence
-- personalization
-- pricing optimization
+- AI sales research and lead intelligence
+- personalized offers and recommendations
+- pricing and monetization optimization
 - workflow automation
 - document processing
 - internal knowledge assistants
 - conversational search
+- personalized customer journeys
 - AI customer-support agents
-- agent copilots
-- churn prediction
+- customer-service copilots
+- churn and retention intelligence
 - forecasting
 - competitive intelligence
-- AI-enabled products
+- AI-enabled products and services
 - autonomous customer-task agents
 
 ---
 
-# 3. Prioritize the Opportunities
+# 4. Prioritize the Opportunities
 
-Each opportunity is evaluated using factors including:
+Each structured opportunity is evaluated using factors including:
 
-| Dimension | Question |
+| Dimension | Management Question |
 |---|---|
 | Business Value | How meaningful could the commercial or strategic impact be? |
 | Customer Value | Does it materially improve the customer experience? |
 | Strategic Fit | Does it support the company's stated objective? |
-| Challenge Relevance | Does it address problems management has actually identified? |
+| Challenge Relevance | Does it address problems management has identified? |
 | Data Readiness | Does the organization appear to have supporting data? |
 | Feasibility | Can it realistically be implemented? |
 | Time to Impact | How quickly could measurable results emerge? |
@@ -125,21 +239,21 @@ Each opportunity is evaluated using factors including:
 
 The result is a ranked AI opportunity portfolio.
 
-Opportunities are also categorized as:
+Opportunities are also classified as:
 
-**⚡ Quick Wins** — attractive opportunities with relatively high feasibility and short time to impact.
+**⚡ Quick Wins** — high feasibility and relatively short time to impact.
 
-**🎯 Strategic Bets** — potentially high-value opportunities requiring greater investment, organizational commitment or implementation complexity.
+**🎯 Strategic Bets** — potentially high-value initiatives requiring greater investment or organizational commitment.
 
 **🔧 Enablers** — capabilities that can support multiple future AI initiatives.
 
-**🧪 Experiments** — opportunities worth testing before making larger commitments.
+**🧪 Experiments** — opportunities worth testing before larger commitments are made.
 
 ---
 
-# 4. Management Calibration
+# 5. Management Calibration
 
-One of the central design principles of the project is:
+One of the central principles of the project is:
 
 > **The model informs the decision. Management owns the decision.**
 
@@ -153,39 +267,41 @@ Management may know things the model does not:
 - a strategic partnership is becoming available
 - internal capabilities are stronger than assumed
 - executive priorities have changed
-- an initiative may have value beyond its immediate ROI
+- an initiative may have strategic value beyond its immediate ROI
 
 The application therefore separates:
 
 ### Model Rank
+
 The framework's original analytical recommendation.
 
 ### Management Rank
+
 The final priority after management judgment.
 
 Users can:
 
 - move opportunities up or down
-- increase their strategic importance
-- decrease their strategic importance
+- increase strategic importance
+- decrease strategic importance
 - preserve the original model score
 - see where management has overridden the framework
 
-This creates an auditable distinction between **analytical recommendation and executive judgment**.
+This creates an explicit distinction between **analytical recommendation and executive judgment**.
 
 ---
 
-# 5. From Strategy to Execution
+# 6. From Strategy to Execution
 
 Identifying AI opportunities is not enough.
 
-For the management-calibrated **Top 3 priorities**, the application automatically creates a 90-day execution framework.
+For the management-calibrated **Top 3 priorities**, the application creates a 90-day execution framework.
 
 ## Days 1–30 — Validate
 
 Define:
 
-- the business hypothesis
+- business hypothesis
 - target users or process
 - baseline performance
 - available data
@@ -193,7 +309,7 @@ Define:
 - risks
 - success criteria
 
-The purpose is to establish whether the opportunity solves a sufficiently important problem before committing significant resources.
+The purpose is to determine whether the opportunity solves a sufficiently important problem before committing significant resources.
 
 ## Days 31–60 — Pilot
 
@@ -223,9 +339,7 @@ Then make an explicit:
 
 decision.
 
-The application also recommends opportunity-specific KPIs.
-
-Examples include:
+The application also recommends opportunity-specific KPIs such as:
 
 - revenue uplift
 - conversion
@@ -241,281 +355,19 @@ Examples include:
 
 ---
 
-# Case Management
-
-The application supports multiple business assessments.
-
-Users can:
-
-- save a case
-- reopen it
-- edit it
-- duplicate it for scenario analysis
-- delete it
-- preserve management rankings and score adjustments
-
-This makes it possible to explore different strategic scenarios for the same company.
-
-For example:
-
-**Scenario A:** Revenue Growth  
-**Scenario B:** Operational Efficiency  
-**Scenario C:** Customer Experience
-
-Current case storage uses browser `localStorage`, keeping the prototype simple and avoiding the need for accounts or a backend.
-
-Saved cases therefore remain on the user's current browser/device and may be lost if browser storage is cleared.
-
----
-
-# Export & Executive Reporting
-
-Assessments can be exported as:
-
-### PDF / Print
-
-Designed for management review, workshops and discussion.
-
-### CSV
-
-Structured data suitable for Excel or additional analysis.
-
-### TXT
-
-Portable structured output that can also be reused as context for AI tools and further analysis.
-
-Exports preserve the distinction between:
-
-- model ranking
-- management ranking
-- model score
-- management adjustment
-- calibrated score
-
-The 90-day roadmap and suggested KPIs are also included in the relevant exports.
-
----
-
-# How the Current Model Works
-
-Version 2.3 intentionally uses a **transparent rules-based prioritization model** rather than pretending to provide sophisticated AI reasoning where none exists.
-
-The framework considers:
-
-- strategic-objective alignment
-- challenge signals
-- available-data signals
-- business-model fit
-- company context
-- business value
-- customer value
-- feasibility
-- time to impact
-- implementation complexity
-- risk
-
-The current version uses keyword/theme matching and weighted scoring to make the logic understandable and inspectable.
-
-This is intentional.
-
-The project explores an architecture in which structured business logic remains understandable even as more advanced AI capabilities are introduced.
-
----
-
-# Product Philosophy
-
-The longer-term architecture is:
-
-**AI generates and reasons**
-
-↓
-
-**Structured framework evaluates and prioritizes**
-
-↓
-
-**Management challenges and calibrates**
-
-↓
-
-**The application converts priorities into an execution plan**
-
-This avoids two common extremes:
-
-**Pure rules:** transparent, but limited in understanding complex business context.
-
-**Pure generative AI:** flexible and powerful, but potentially inconsistent and difficult to audit.
-
-A hybrid approach can combine the advantages of both.
-
----
-
-# Current Architecture
-
-The prototype deliberately uses a lightweight architecture:
-
-- HTML
-- CSS
-- JavaScript
-- browser localStorage
-- GitHub Pages
-
-There is currently:
-
-- no backend
-- no database
-- no authentication
-- no external API dependency
-- no exposed AI API key
-
-This makes the application simple to inspect, deploy and test.
-
----
-
-# Current Limitations
-
-This is an evolving prototype rather than a production AI strategy platform.
-
-Current limitations include:
-
-- rules-based rather than semantic interpretation of business challenges
-- predefined AI opportunity library
-- heuristic scoring rather than empirically calibrated ROI prediction
-- browser-local case storage
-- no multi-user collaboration
-- no enterprise data integrations
-- no authentication or cloud synchronization
-
-The scores should therefore be interpreted as **decision-support signals, not financial forecasts**.
-
----
-
-# Future Development
-
-Potential next stages include:
-
-### V3 — AI-Assisted Opportunity Discovery
-
-Use an LLM to interpret company context and propose opportunities beyond the predefined library.
-
-### Semantic Business Analysis
-
-Move beyond keyword matching toward richer understanding of business problems, processes and strategic objectives.
-
-### Explainable AI + Structured Scoring
-
-Allow generative AI to provide contextual reasoning while retaining transparent prioritization criteria.
-
-### Management Override Reasons
-
-Record why executives change a recommendation, for example:
-
-- customer demand
-- strategic importance
-- executive priority
-- competitive pressure
-- regulation
-- existing internal capabilities
-
-### Cloud Case Management
-
-Optional accounts, cross-device case storage and collaboration.
-
-### Executive Reporting
-
-Generate richer board- or management-ready strategy reports.
-
-### Portfolio Tracking
-
-Move from opportunity identification into pilot tracking, KPI measurement and scale/stop decisions.
-
----
-
-# Example Use Cases
-
-The framework can be applied across many industries.
-
-A marketplace might evaluate:
-
-- conversational search
-- listing recommendations
-- pricing intelligence
-- lead qualification
-- customer-support automation
-
-A B2B technology company might explore:
-
-- AI sales research
-- customer-service copilots
-- internal knowledge assistants
-- churn prediction
-- competitive intelligence
-
-A professional-services organization might prioritize:
-
-- document analysis
-- knowledge retrieval
-- workflow automation
-- research intelligence
-- AI-enabled advisory services
-
-The underlying question remains the same:
-
-> **Where can AI create enough measurable value to justify implementation?**
-
----
-
-# What This Project Represents
-
-I am not a software engineer, and this project is not intended to present me as one.
-
-My professional background is in **business growth, digital marketplaces, technology commercialization, international expansion, product strategy and strategic partnerships**.
-
-I have spent much of my career working at the intersection between businesses adopting technology and technology companies bringing new capabilities to market.
-
-This project is an experiment in applying that experience to AI:
-
-**identifying the business problem → structuring the opportunity → understanding the technology → prioritizing investment → retaining human judgment → translating strategy into execution.**
-
-It also reflects how AI is changing the relationship between business professionals and technology.
-
-Increasingly, understanding a business problem deeply, defining the right product logic and working effectively with AI tools can allow non-developers to move from an idea to a functioning prototype much faster than was previously possible.
-
----
-
-## Live Demo
-
-**Try the AI Business Opportunity Mapper:**
-
-https://javier962.github.io/ai-business-opportunity-mapper/
-
----
-
-## Project Status
-
-**V2.3 — Working prototype**
-
-Current capabilities:
-
-- contextual business assessment
-- AI opportunity mapping
-- weighted prioritization
-- management calibration
-- model vs management ranking
-- portfolio classification
-- saved cases
-- scenario duplication
-- PDF / CSV / TXT export
-- 90-day execution planning
-- opportunity-specific KPI recommendations
-
----
-
-## Created by
-
-**Javier Ortiz Sanz**
-
-Growth & Technology Executive  
-AI · Business Development · International Expansion · Digital Strategy
-
-Built as part of my exploration of practical AI adoption, technology commercialization, business growth and digital transformation.
+# Hybrid AI Architecture
+
+V3 deliberately separates generative AI from deterministic business logic.
+
+```text
+Business Context
+       ↓
+LLM Reasoning
+       ↓
+AI Opportunity Discovery
+       ↓
+Structured Evaluation & Prioritization
+       ↓
+Management Calibration
+       ↓
+90-Day Execution Plan
