@@ -1,0 +1,134 @@
+/* AI Business Opportunity Mapper — V3 AI Discovery */
+
+.ai-button{
+  background:linear-gradient(135deg,#7c3aed,#2563eb);
+  color:white;
+  padding:13px 20px;
+  font-size:15px;
+}
+.ai-button:disabled{opacity:.65;cursor:wait}
+
+.ai-discovery{
+  margin:30px 0;
+  border:1px solid #ddd6fe;
+  background:linear-gradient(180deg,#faf5ff,#ffffff);
+  border-radius:16px;
+  padding:26px;
+}
+
+.ai-discovery-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:20px;
+}
+.ai-discovery-head h2{margin:3px 0 0}
+.ai-eyebrow,.ai-label{
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.7px;
+  color:#6d28d9;
+}
+.ai-chip{
+  background:#ede9fe;
+  color:#6d28d9;
+  border-radius:20px;
+  padding:6px 10px;
+  font-size:10px;
+  font-weight:800;
+  white-space:nowrap;
+}
+.ai-chip.subtle{background:#f1f5f9;color:#475569}
+
+.ai-principle{
+  margin:18px 0;
+  padding:14px 16px;
+  border-left:4px solid #7c3aed;
+  background:white;
+  border-radius:8px;
+  color:#475569;
+  line-height:1.55;
+}
+
+.ai-status{
+  margin:15px 0;
+  padding:12px 14px;
+  border-radius:8px;
+  background:#f8fafc;
+  color:#475569;
+  font-size:13px;
+}
+.ai-status.loading{background:#eff6ff;color:#1d4ed8}
+.ai-status.success{background:#ecfdf5;color:#047857}
+.ai-status.error{background:#fff1f2;color:#be123c}
+
+.ai-interpretation{
+  background:#0f172a;
+  color:white;
+  border-radius:12px;
+  padding:20px;
+  margin:18px 0;
+}
+.ai-interpretation .ai-label{color:#c4b5fd}
+.ai-interpretation p{margin:8px 0 0;line-height:1.65;color:#e2e8f0}
+
+.ai-opportunity{
+  background:white;
+  border:1px solid #e2e8f0;
+  border-radius:14px;
+  padding:22px;
+  margin:16px 0;
+}
+.ai-opportunity-top{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  align-items:flex-start;
+}
+.ai-opportunity h3{margin:5px 0;font-size:20px}
+.ai-rank{
+  font-size:11px;
+  font-weight:800;
+  color:#7c3aed;
+  text-transform:uppercase;
+}
+.ai-description{line-height:1.65;color:#334155}
+.ai-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:14px 0;
+}
+.ai-box,.ai-first-step{
+  background:#f8fafc;
+  border-radius:9px;
+  padding:14px;
+}
+.ai-box p,.ai-first-step p{margin:7px 0 0;line-height:1.55;font-size:14px}
+.ai-first-step{background:#eff6ff}
+.ai-kpis{margin-top:14px}
+.ai-kpis span{
+  display:inline-block;
+  background:#f1f5f9;
+  padding:6px 9px;
+  border-radius:16px;
+  margin:7px 5px 0 0;
+  font-size:12px;
+  font-weight:700;
+  color:#334155;
+}
+
+@media(max-width:700px){
+  .ai-discovery{padding:18px}
+  .ai-discovery-head{display:block}
+  .ai-chip{display:inline-block;margin-top:10px}
+  .ai-grid{grid-template-columns:1fr}
+  .ai-opportunity-top{display:block}
+}
+
+@media print{
+  .ai-button,.ai-status{display:none!important}
+  .ai-discovery{break-inside:avoid}
+  .ai-opportunity{break-inside:avoid}
+}
